@@ -1,0 +1,52 @@
+#painelExibicao{
+	-fx-background-color:  #e6e6e6;
+	-fx-background-image: url("city-fundo.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 480 350;
+	-fx-background-position: center;
+}
+
+#btnConfig{
+	-fx-background-color: rgba(0,0,0,0);
+}
+#btnConfig:hover{
+	-fx-background-color: #f0f0f0;
+}
+
+#btnSair{
+	-fx-background-color: rgba(0,0,0,0);
+}
+#btnSair:hover{
+	-fx-background-color: #f0f0f0;
+}
+
+#btnNovoContato{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnNovoContato:hover{
+	-fx-background-color: #f0f0f0;
+}
+
+#btnNovoGrupo{
+	-fx-background-color: rgba(0,0,0,0);
+}
+#btnNovoGrupo:hover{
+	-fx-background-color: #f0f0f0;
+}
+
+#btnNovaConversa{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnNovaConversa:hover{
+	-fx-background-color: #f0f0f0;
+}
+
+#btnFormulario{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnFormulario:hover{
+	-fx-background-color: #f0f0f0;
+}

@@ -1,0 +1,37 @@
+#painelLogin{
+	-fx-background-color: #ffffff;
+}
+
+#campoLogin, #campoSenha{
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-style: hidden hidden solid hidden;
+	-fx-border-color: black;
+	-fx-border-width: 1px;
+}
+
+#btnEntrar{
+	-fx-background-color: #00A611;
+	-fx-border-radius: 80px;
+	-fx-background-radius: 80px;
+}
+#btnEntrar:hover{
+	-fx-background-color: #04D939;
+}
+
+#btnCadastrar{
+	-fx-background-color: black;
+	-fx-border-radius: 80px;
+	-fx-background-radius: 80px;
+}
+
+#btnCadastrar:hover{
+	-fx-background-color: #363636;
+}
+
+#btnSobre{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnSobre:hover{
+	-fx-background-color:#f0f0f0;
+}
