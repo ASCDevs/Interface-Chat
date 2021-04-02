@@ -15,8 +15,9 @@ public class TelaCadastroController {
 	@FXML
 	public void	cancelarAction() {
 		try {
-			Pane telaLogin = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
-			Main.openTela(telaLogin);
+			Pane telaLogin = FXMLLoader.load(getClass().getResource("/resources/TelaLogin.fxml"));
+			String titulo = "Login";
+			Main.openTela(telaLogin,titulo);
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

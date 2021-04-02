@@ -2,10 +2,11 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-
 
 public class Main extends Application {
 	
@@ -18,10 +19,10 @@ public class Main extends Application {
 			stage = primaryStage;
 			stage.setTitle("Login");
 			
-			
-			telaLogin = FXMLLoader.load(getClass().getResource("TelaLogin.fxml"));
+			telaLogin = FXMLLoader.load(getClass().getResource("/resources/TelaLogin.fxml"));
 			
 			Scene cena = new Scene(telaLogin);
+			stage.setResizable(false);
 			stage.setScene(cena);
 			stage.show();
 			
@@ -37,8 +38,16 @@ public class Main extends Application {
 	public static void openTela(Pane tela, String titulo) {
 		stage.setTitle(titulo);
 		Scene cena = new Scene(tela);
+		if(titulo=="Login") {
+			stage.setResizable(false);
+		}else {
+			stage.setResizable(true);
+		}
 		stage.setScene(cena);
 		stage.show();
+		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+		stage.setX((screenBounds.getWidth()-stage.getWidth())/2);
+		stage.setY((screenBounds.getHeight()-stage.getHeight())/2);
 	}
 	
 }

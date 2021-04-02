@@ -1,9 +1,6 @@
 package application;
 
 import java.io.IOException;
-
-import javax.swing.JOptionPane;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -20,7 +17,7 @@ public class TelaLoginController {
 	@FXML
 	public void entrarAction() {
 		try {
-			Pane telaPainel = FXMLLoader.load(getClass().getResource("TelaPainel.fxml"));
+			Pane telaPainel = FXMLLoader.load(getClass().getResource("/resources/TelaPainel.fxml"));
 			String titulo = "Chat - Secretaria do Meio Ambiente do Estado";
 			Main.openTela(telaPainel,titulo);
 		} catch (IOException e) {
@@ -31,7 +28,7 @@ public class TelaLoginController {
 	@FXML
 	public void cadastroAction() {
 		try {
-			Pane telaCadastro = FXMLLoader.load(getClass().getResource("TelaCadastro.fxml"));
+			Pane telaCadastro = FXMLLoader.load(getClass().getResource("/resources/TelaCadastro.fxml"));
 			String titulo = "Cadastro de usuário";
 			Main.openTela(telaCadastro,titulo);
 		} catch (IOException e) {
