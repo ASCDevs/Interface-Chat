@@ -30,7 +30,7 @@ public class Contato implements Initializable{
 	
 	public Pane itemContato;
 
-	Contato(String nome, String status){
+	public Contato(String nome, String status){
 		this.nome = nome;
 		this.status = status;
 	}

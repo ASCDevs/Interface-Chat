@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;

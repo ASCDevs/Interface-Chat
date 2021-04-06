@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: #3b3b3b; -fx-background-image: url(&quot;/resources/city-fundo.jpg&quot;);;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaPainelController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: #3b3b3b; -fx-background-image: url(&quot;/resources/city-fundo.jpg&quot;);;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaPainelController">
    <left>
       <VBox prefHeight="200.0" prefWidth="280.0" style="-fx-background-color: #2d2d2d;" BorderPane.alignment="CENTER">
          <children>
@@ -36,35 +36,35 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnConfig" layoutX="226.0" layoutY="26.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" stylesheets="@PainelPrincipal.css">
+                  <Button fx:id="btnConfig" layoutX="226.0" layoutY="26.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" >
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@configurar.png" />
+                              <Image url="@../images/configurar.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnSair" layoutX="226.0" layoutY="59.0" mnemonicParsing="false" onAction="#sairAction" prefHeight="24.0" prefWidth="24.0" stylesheets="@PainelPrincipal.css">
+                  <Button fx:id="btnSair" layoutX="226.0" layoutY="59.0" mnemonicParsing="false" onAction="#sairAction" prefHeight="24.0" prefWidth="24.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@logout.png" />
+                              <Image url="@../images/logout.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnNovoContato" graphicTextGap="0.0" layoutX="72.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" stylesheets="@PainelPrincipal.css">
+                  <Button fx:id="btnNovoContato" graphicTextGap="0.0" layoutX="72.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@novo-contato.png" />
+                              <Image url="@../images/novo-contato.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -72,11 +72,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnNovoGrupo" layoutX="119.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" stylesheets="@PainelPrincipal.css">
+                  <Button fx:id="btnNovoGrupo" layoutX="119.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@novo-grupo.png" />
+                              <Image url="@../images/novo-grupo.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -87,11 +87,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnNovaConversa" layoutX="167.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" stylesheets="@PainelPrincipal.css">
+                  <Button fx:id="btnNovaConversa" layoutX="167.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@nova-conversa.png" />
+                              <Image url="@../images/nova-conversa.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -99,11 +99,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnFormulario" layoutX="23.0" layoutY="148.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="237.0" stylesheets="@PainelPrincipal.css" text="Enviar dados para Secretaria">
+                  <Button fx:id="btnFormulario" layoutX="23.0" layoutY="148.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="237.0" text="Enviar dados para Secretaria">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@form.png" />
+                              <Image url="@../images/form.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -135,6 +135,6 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="painelExibicao" prefHeight="200.0" prefWidth="200.0" stylesheets="@PainelPrincipal.css" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="painelExibicao" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

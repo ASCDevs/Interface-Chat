@@ -1,6 +1,6 @@
 #painelExibicao{
 	-fx-background-color:  #e6e6e6;
-	-fx-background-image: url("city-fundo.png");
+	-fx-background-image: url("../images/city-fundo.png");
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: 480 350;
 	-fx-background-position: center;
