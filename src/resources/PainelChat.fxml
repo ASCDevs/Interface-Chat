@@ -1,31 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Pane prefHeight="55.0" prefWidth="820.0" style="-fx-background-color: #c9c9c9;" BorderPane.alignment="CENTER">
-         <children>
-            <Ellipse fill="DODGERBLUE" layoutX="48.0" layoutY="28.0" radiusX="20.0" radiusY="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <Text fx:id="txtNomeContato" layoutX="78.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Contato" />
-            <Button layoutX="739.0" layoutY="15.0" mnemonicParsing="false" text="Button" />
-         </children>
-      </Pane>
-   </top>
-   <bottom>
-      <Pane prefHeight="64.0" prefWidth="820.0" style="-fx-background-color: #c9c9c9;" BorderPane.alignment="CENTER" />
-   </bottom>
+<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
+      <ScrollPane fx:id="painelConversa" fitToHeight="true" fitToWidth="true">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </ScrollPane>
    </center>
+   <top>
+      <HBox alignment="CENTER" style="-fx-background-color: #c9c9c9;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane maxWidth="520.0" prefHeight="53.0" prefWidth="410.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Text fx:id="txtNomeContato" layoutX="68.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Contato" />
+                  <Ellipse fill="DODGERBLUE" layoutX="34.0" layoutY="26.0" radiusX="20.0" radiusY="20.0" stroke="BLACK" strokeType="INSIDE" />
+               </children>
+            </Pane>
+            <Pane maxWidth="520.0" prefHeight="53.0" prefWidth="410.0">
+               <children>
+                  <Button layoutX="295.0" layoutY="14.0" mnemonicParsing="false" text="Opções do User" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="63.0" prefWidth="820.0" style="-fx-background-color: #c9c9c9;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane>
+               <children>
+                  <TextArea layoutX="14.0" layoutY="6.0" prefHeight="48.0" prefWidth="625.0" />
+                  <Button layoutX="744.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Enviar" />
+                  <Button layoutX="673.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Anexar" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

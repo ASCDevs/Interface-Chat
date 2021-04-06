@@ -38,11 +38,9 @@ public class Main extends Application {
 	public static void openTela(Pane tela, String titulo) {
 		stage.setTitle(titulo);
 		Scene cena = new Scene(tela);
-		if(titulo=="Login") {
-			stage.setResizable(false);
-		}else {
-			stage.setResizable(true);
-		}
+		stage.setMinHeight(680);
+		stage.setMinWidth(1100);
+		stage.setResizable(true);
 		stage.setScene(cena);
 		stage.show();
 		Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();

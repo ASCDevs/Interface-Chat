@@ -6,8 +6,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class TelaLoginController implements Initializable {
 	
@@ -33,7 +35,10 @@ public class TelaLoginController implements Initializable {
 		try {
 			Pane telaCadastro = FXMLLoader.load(getClass().getResource("/resources/TelaCadastro.fxml"));
 			String titulo = "Cadastro de usuário";
-			Main.openTela(telaCadastro,titulo);
+			Stage stage = new Stage();
+			stage.setTitle(titulo);
+			stage.setScene(new Scene(telaCadastro));
+			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

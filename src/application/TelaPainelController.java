@@ -4,22 +4,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import application.Contato;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 
 public class TelaPainelController implements Initializable {
 	
-	public ArrayList<Contato> contatos;
+	public ArrayList<ContatoController> contatos;
 	
 	@FXML
 	public Button btnSair;
@@ -91,22 +86,26 @@ public class TelaPainelController implements Initializable {
 	public void contatosFake() {
 		contatos = new ArrayList();
 		
-		contatos.add(new Contato("Ulisses Valente","online"));
-		contatos.add(new Contato("Noémi Junqueira","online"));
-		contatos.add(new Contato("Davide Paião","online"));
-		contatos.add(new Contato("Pérola Mexia ","online"));
-		contatos.add(new Contato("Catarina Noleto","online"));
-		contatos.add(new Contato("Anastacia Lobato","online"));
-		contatos.add(new Contato("Fernão Madureira","online"));
-		contatos.add(new Contato("André Ramos","offline"));
-		contatos.add(new Contato("Silvana Lameiras","offline"));
-		contatos.add(new Contato("Pérola Ruela","offline"));
-		contatos.add(new Contato("Emma Brito","offline"));
-		contatos.add(new Contato("Brayan Moreno","offline"));
+		contatos.add(new ContatoController("Ulisses Valente","online"));
+		contatos.add(new ContatoController("Noémi Junqueira","online"));
+		contatos.add(new ContatoController("Davide Paião","online"));
+		contatos.add(new ContatoController("Pérola Mexia ","online"));
+		contatos.add(new ContatoController("Catarina Noleto","online"));
+		contatos.add(new ContatoController("Anastacia Lobato","online"));
+		contatos.add(new ContatoController("Fernão Madureira","online"));
+		contatos.add(new ContatoController("André Ramos","offline"));
+		contatos.add(new ContatoController("Silvana Lameiras","offline"));
+		contatos.add(new ContatoController("Pérola Ruela","offline"));
+		contatos.add(new ContatoController("Emma Brito","offline"));
+		contatos.add(new ContatoController("Brayan Moreno","offline"));
 		
 	}
 	
 	public void exibePainel(Pane painel) {
 		painelExibicao.getChildren().setAll(painel);
+		painelExibicao.setTopAnchor(painel, 0.0);
+		painelExibicao.setLeftAnchor(painel, 0.0);
+		painelExibicao.setRightAnchor(painel,0.0);
+		painelExibicao.setBottomAnchor(painel, 0.0);
 	}
 }

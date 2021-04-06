@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class TelaCadastroController {
 
@@ -15,13 +16,8 @@ public class TelaCadastroController {
 	
 	@FXML
 	public void	cancelarAction() {
-		try {
-			Pane telaLogin = FXMLLoader.load(getClass().getResource("/resources/TelaLogin.fxml"));
-			String titulo = "Login";
-			Main.openTela(telaLogin,titulo);
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
+		final Stage stage = (Stage) btnCancelar.getScene().getWindow();
+		stage.close();
 	}
 	
 }

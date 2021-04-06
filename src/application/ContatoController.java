@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Text;
 
-public class Contato implements Initializable{
+public class ContatoController implements Initializable{
 	
 	public String nome;
 	public String status;
@@ -33,7 +33,7 @@ public class Contato implements Initializable{
 	public Pane itemContato;
 	public ChatController chatControl;
 
-	public Contato(String nome, String status){
+	public ContatoController(String nome, String status){
 		this.nome = nome;
 		this.status = status;
 		this.chatControl = new ChatController(this.nome,this.status);
