@@ -19,10 +19,6 @@ public class Main extends Application {
 			stage = primaryStage;
 			stage.setTitle("Login");
 			
-			/*TelaLoginController loginControl = new TelaLoginController();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/TelaLogin.fxml"));
-			loader.setController(loginControl);
-			telaLogin = loader.load();*/
 			telaLogin = FXMLLoader.load(getClass().getResource("/resources/TelaLogin.fxml"));
 			
 			Scene cena = new Scene(telaLogin);

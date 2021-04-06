@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
-
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="55.0" prefWidth="820.0" style="-fx-background-color: #c9c9c9;" BorderPane.alignment="CENTER">
+         <children>
+            <Ellipse fill="DODGERBLUE" layoutX="48.0" layoutY="28.0" radiusX="20.0" radiusY="20.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="txtNomeContato" layoutX="78.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Contato" />
+            <Button layoutX="739.0" layoutY="15.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
+   </top>
+   <bottom>
+      <Pane prefHeight="64.0" prefWidth="820.0" style="-fx-background-color: #c9c9c9;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

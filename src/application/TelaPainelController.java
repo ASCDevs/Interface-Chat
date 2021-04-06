@@ -11,12 +11,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 public class TelaPainelController implements Initializable {
+	
+	public ArrayList<Contato> contatos;
 	
 	@FXML
 	public Button btnSair;
@@ -27,8 +30,8 @@ public class TelaPainelController implements Initializable {
 	@FXML
 	public VBox pnContatos;
 	
-	public ArrayList<Contato> contatos;
-	
+	@FXML
+	public AnchorPane painelExibicao;
 	
 	@FXML
 	public void sairAction() {
@@ -73,6 +76,9 @@ public class TelaPainelController implements Initializable {
 				items[i].setOnMouseExited(event -> {
 					items[j].setStyle("-fx-background-color: "+corFundo);
 				});
+				items[i].setOnMouseClicked(event -> {
+					this.exibePainel(contatos.get(j).getChat());
+				});
 				
 				pnContatos.getChildren().add(items[i]);
 			} catch (IOException e) {
@@ -98,5 +104,9 @@ public class TelaPainelController implements Initializable {
 		contatos.add(new Contato("Emma Brito","offline"));
 		contatos.add(new Contato("Brayan Moreno","offline"));
 		
+	}
+	
+	public void exibePainel(Pane painel) {
+		painelExibicao.getChildren().setAll(painel);
 	}
 }
