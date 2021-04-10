@@ -7,15 +7,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <ScrollPane fx:id="painelConversa" fitToHeight="true" fitToWidth="true">
+      <ScrollPane fx:id="painelScroll" fitToHeight="true" fitToWidth="true" maxWidth="1040.0" vvalue="1.0">
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
+         <content>
+            <VBox fx:id="painelConversa" alignment="TOP_CENTER" maxWidth="1040.0" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" />
+         </content>
       </ScrollPane>
    </center>
    <top>
