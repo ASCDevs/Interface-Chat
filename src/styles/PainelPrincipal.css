@@ -50,3 +50,21 @@
 #btnFormulario:hover{
 	-fx-background-color: #f0f0f0;
 }
+
+#painelScroll {
+	-fx-background-color:transparent;
+}
+#painelScroll > .viewport{
+	-fx-background-color:transparent;
+}
+
+#balaoConversaContato{
+	-fx-background-color:white;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10px;
+}
+#balaoConversaUser{
+	-fx-background-color:#f0f0f0;
+	-fx-border-radius: 10px;
+	-fx-background-radius: 10px;
+}

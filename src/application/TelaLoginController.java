@@ -24,7 +24,7 @@ public class TelaLoginController implements Initializable {
 		try {
 			Pane telaPainel = FXMLLoader.load(getClass().getResource("/resources/TelaPainel.fxml"));
 			String titulo = "Chat - Secretaria do Meio Ambiente do Estado";
-			Main.openTela(telaPainel,titulo);
+			Main.abrirTela(telaPainel,titulo);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

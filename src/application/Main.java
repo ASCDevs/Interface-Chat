@@ -35,7 +35,7 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	public static void openTela(Pane tela, String titulo) {
+	public static void abrirTela(Pane tela, String titulo) {
 		stage.setTitle(titulo);
 		Scene cena = new Scene(tela);
 		stage.setMinHeight(680);

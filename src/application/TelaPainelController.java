@@ -11,9 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import models.Contato;
+import models.Usuario;
 
 public class TelaPainelController implements Initializable {
 	
+	public Usuario user;
 	public ArrayList<ContatoController> contatos;
 	
 	@FXML
@@ -36,13 +39,13 @@ public class TelaPainelController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		contatosFake();
+		user = new Usuario("123"); //Tratar recebimento do id
 		carregarContatos();
 	}
 	
 	
 	public void carregarContatos() {
-		
+		setContatoControllers();
 		Pane[] items = new Pane[contatos.size()];
 		String cinza, branco, selecionado;
 		cinza = "#EFEFEF";
@@ -82,24 +85,16 @@ public class TelaPainelController implements Initializable {
 		}
 	}
 	
-	
-	public void contatosFake() {
+	public void setContatoControllers() {
 		contatos = new ArrayList();
+		ArrayList<Contato> userContatos = user.getContatos();
 		
-		contatos.add(new ContatoController("Ulisses Valente","online"));
-		contatos.add(new ContatoController("Noémi Junqueira","online"));
-		contatos.add(new ContatoController("Davide Paião","online"));
-		contatos.add(new ContatoController("Pérola Mexia ","online"));
-		contatos.add(new ContatoController("Catarina Noleto","online"));
-		contatos.add(new ContatoController("Anastacia Lobato","online"));
-		contatos.add(new ContatoController("Fernão Madureira","online"));
-		contatos.add(new ContatoController("André Ramos","offline"));
-		contatos.add(new ContatoController("Silvana Lameiras","offline"));
-		contatos.add(new ContatoController("Pérola Ruela","offline"));
-		contatos.add(new ContatoController("Emma Brito","offline"));
-		contatos.add(new ContatoController("Brayan Moreno","offline"));
+		for(int i=0;i<userContatos.size();i++) {
+			contatos.add(new ContatoController(userContatos.get(i)));
+		}
 		
 	}
+	
 	
 	public void exibePainel(Pane painel) {
 		painelExibicao.getChildren().setAll(painel);
