@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Contato {
@@ -10,7 +11,7 @@ public class Contato {
 	private String nome;
 	private String status;
 	private String tipoContato;
-	private List<List<String>> conversa; //Provavelmente transformar em objeto ou arraylist
+	private List<List<String>> conversa; 
 	
 	Contato(String idContato,String idUserLogado, String nome, String status, String tipoContato){
 		this.idContato = idContato;
@@ -19,10 +20,10 @@ public class Contato {
 		this.status = status;
 		this.tipoContato = tipoContato;
 		this.conversa = new ArrayList<List<String>>();
-		this.setConversa();
+		this.loadConversa();
 	}
 	
-	private void setConversa() {
+	private void loadConversa() {
 		//Em produção, com o id do usuário logado, este método
 		//irá solicitar ao server o histórico de conversa
 		//isso se dará da realação do id do usuário com id do contato
@@ -39,7 +40,18 @@ public class Contato {
 		conversa.add(Arrays.asList(idContato,"Mensagem 4 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
 		conversa.add(Arrays.asList(idUserLogado,"Mensagem 3 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
 		conversa.add(Arrays.asList(idUserLogado,"Mensagem 4 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idContato,"Mensagem 5 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		conversa.add(Arrays.asList(idContato,"Mensagem 5 = Mensagens gravadas as: "+new Date(),"(Data a ser Formatada)"));
+	}
+	
+	public void addMsgTextoUserLogado(String msg) {
+		//Quando conectar ao local de armazenamento 
+		//não será necessário gravar no array, somente enviar pra onde 
+		//irá armazenar
+		conversa.add(Arrays.asList(idUserLogado,msg,"(Data a ser formatada)"));
+	}
+	
+	public void addMsgTextoContato(String msg) {
+		conversa.add(Arrays.asList(idContato,msg,"(Data a ser Formatada)"));
 	}
 	
 	public String getNome() {

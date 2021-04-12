@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ScrollPane fx:id="painelScroll" fitToHeight="true" fitToWidth="true" maxWidth="1040.0" vvalue="1.0">
          <BorderPane.margin>
@@ -44,9 +44,10 @@
          <children>
             <Pane>
                <children>
-                  <TextArea layoutX="14.0" layoutY="6.0" prefHeight="48.0" prefWidth="625.0" />
-                  <Button layoutX="744.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Enviar" />
-                  <Button layoutX="673.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Anexar" />
+                  <TextArea fx:id="campoMsg" layoutX="14.0" layoutY="6.0" prefHeight="48.0" prefWidth="506.0" />
+                  <Button layoutX="744.0" layoutY="6.0" mnemonicParsing="false" onAction="#enviarUserMensagem" prefHeight="48.0" text="Enviar" />
+                  <Button layoutX="683.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Anexar" />
+                  <Button layoutX="529.0" layoutY="6.0" mnemonicParsing="false" onAction="#recebeContatoMensagem" prefHeight="48.0" prefWidth="147.0" text="teste msg contato" />
                </children>
             </Pane>
          </children>

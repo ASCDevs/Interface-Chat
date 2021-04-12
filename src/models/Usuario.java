@@ -43,7 +43,7 @@ public class Usuario {
 		return this.contatos;
 	}
 	
-	public String getId() {
+	public String getIdUser() {
 		return this.id;
 	}
 }
