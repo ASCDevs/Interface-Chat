@@ -18,12 +18,17 @@ public class TelaPainelController implements Initializable {
 	
 	public Usuario user;
 	public ArrayList<ContatoController> contatos;
+	public FormularioController formulario;
+	public Pane painelForm;
 	
 	@FXML
 	public Button btnSair;
 	
 	@FXML
 	public Button btnConfig;
+	
+	@FXML 
+	public Button btnFormulario;
 	
 	@FXML
 	public VBox pnContatos;
@@ -40,9 +45,22 @@ public class TelaPainelController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		user = new Usuario("123"); //Tratar recebimento do id
+		carregarFormulario();
 		carregarContatos();
 	}
 	
+	public void carregarFormulario() {
+		this.formulario = new FormularioController(user);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/PainelForm.fxml"));
+		loader.setController(formulario);
+		try {
+			this.painelForm = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	public void carregarContatos() {
 		setContatoControllers();
@@ -93,6 +111,11 @@ public class TelaPainelController implements Initializable {
 			contatos.add(new ContatoController(userContatos.get(i)));
 		}
 		
+	}
+	
+	@FXML
+	public void acessarFormulario() {
+		this.exibePainel(painelForm);
 	}
 	
 	

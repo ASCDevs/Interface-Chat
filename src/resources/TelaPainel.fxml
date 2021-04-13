@@ -99,7 +99,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnFormulario" layoutX="23.0" layoutY="148.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="237.0" text="Enviar dados para Secretaria">
+                  <Button fx:id="btnFormulario" layoutX="23.0" layoutY="148.0" mnemonicParsing="false" onAction="#acessarFormulario" prefHeight="34.0" prefWidth="237.0" text="Enviar dados para Secretaria">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

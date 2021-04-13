@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="80.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0">
+               <children>
+                  <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="22.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/form-plus.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="227.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Envio de informações a Secretaria">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Line endX="250.0" layoutX="410.0" layoutY="54.0" startX="-251.0" stroke="#00a611" strokeWidth="2.0" />
+                  <Button fx:id="btnInfoForm" layoutX="748.0" layoutY="25.0" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/sobre.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children></Pane>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="60.0" stylesheets="@../styles/PainelPrincipal.css" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnEnviaForm" layoutX="45.0" layoutY="12.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" text="ENVIAR">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <ScrollPane fx:id="fundoForm" fitToWidth="true" prefHeight="414.0">
+         <content>
+            <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="594.0" prefWidth="773.0">
+               <children>
+                  <Pane maxWidth="820.0" prefWidth="650.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Text layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ASSUNTO">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="campoAssunto" layoutY="40.0" prefHeight="32.0" prefWidth="650.0">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETOR DA SECRETARIA">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <ComboBox layoutY="120.0" prefHeight="31.0" prefWidth="261.0" />
+                        <Text layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANOTAÇÕES E OBSERVAÇÕES">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="campoObs" layoutY="194.0" prefHeight="125.0" prefWidth="650.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextArea>
+                        <Text layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ARQUIVOS">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <ListView fx:id="listaArquivos" layoutY="364.0" prefHeight="180.0" prefWidth="360.0" />
+                        <Button fx:id="btnAddArquivo" alignment="TOP_CENTER" layoutX="407.0" layoutY="364.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="243.0" text="ANEXAR ARQUIVO">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <graphic>
+                              <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/add-file.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
