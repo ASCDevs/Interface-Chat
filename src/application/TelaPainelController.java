@@ -19,7 +19,9 @@ public class TelaPainelController implements Initializable {
 	public Usuario user;
 	public ArrayList<ContatoController> contatos;
 	public FormularioController formulario;
+	public ConfigUserController configurarUser;
 	public Pane painelForm;
+	public Pane painelConfigUser;
 	
 	@FXML
 	public Button btnSair;
@@ -45,8 +47,21 @@ public class TelaPainelController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		user = new Usuario("123"); //Tratar recebimento do id
+		carregarConfigUser();
 		carregarFormulario();
 		carregarContatos();
+	}
+	
+	public void carregarConfigUser() {
+		this.configurarUser = new ConfigUserController(user);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/PainelConfigUser.fxml"));
+		loader.setController(configurarUser);
+		try {
+			this.painelConfigUser = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void carregarFormulario() {
@@ -111,6 +126,11 @@ public class TelaPainelController implements Initializable {
 			contatos.add(new ContatoController(userContatos.get(i)));
 		}
 		
+	}
+	
+	@FXML
+	public void acessarConfigUser() {
+		this.exibePainel(painelConfigUser);
 	}
 	
 	@FXML

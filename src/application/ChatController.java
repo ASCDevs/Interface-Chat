@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ public class ChatController implements Initializable{
 
 	private Contato contato;
 	private String tipoChat;
-	
+	public double vValue = 0.0;
 	@FXML
 	public Text txtNomeContato;
 	
@@ -93,11 +94,24 @@ public class ChatController implements Initializable{
 				painelConversa.getChildren().add(balaoConversa.load());
 				campoMsg.clear();
 				campoMsg.requestFocus();
+				//rolarConversa();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 
+	}
+	
+	public void rolarConversa() {
+		
+		Platform.runLater(()->{
+			painelScroll.layout();
+			vValue = painelScroll.getVvalue();
+			System.out.println("Desceu: "+vValue);
+			
+			painelScroll.setVvalue(vValue);
+		});
+		
 	}
 	
 	@FXML

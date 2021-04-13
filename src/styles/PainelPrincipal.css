@@ -74,6 +74,12 @@
 #btnInfoForm:hover{
 	-fx-background-color:#f0f0f0;
 }
+#btnInfoConfigUser{
+	-fx-background-color: rgba(0,0,0,0);
+}
+#btnInfoConfigUser:hover{
+	-fx-background-color:#f0f0f0;
+}
 #campoAssunto{
 	-fx-background-color: rgba(0,0,0,0);
 	-fx-border-style: hidden hidden solid hidden;
@@ -104,16 +110,33 @@
 #fundoForm > .viewport{
 	-fx-background-color:white;
 }
-#btnEnviaForm{
+#btnEnviaForm,#btnSaveUserConfig{
 	-fx-background-color: rgba(0,0,0,0);
 	-fx-border-style: solid;
 	-fx-border-color: #000000;
 	-fx-border-width: 2px;
 }
-#btnEnviaForm:hover{
+#btnSaveUserConfig:hover, #btnEnviaForm:hover{
 	-fx-background-color: #00a611;
 	-fx-text-fill: white;
 	-fx-border-style: solid;
 	-fx-border-color: #00a611;
 	-fx-border-width: 2px;
+}
+
+
+#campoNome,#campoSobrenome,#campoEmail,#campoCPF,#campoSenha,#campoConfirmarSenha{
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-style: hidden hidden solid hidden;
+	-fx-border-color: #00a611;
+	-fx-border-width: 1px;
+}
+
+#btnEditFoto{
+	-fx-background-color: rgba(0,0,0,0.68);
+	-fx-border-radius: 80px;
+	-fx-background-radius: 80px;
+}
+#btnEditFoto:hover{
+	-fx-background-color: rgba(0,0,0,0.87);
 }
