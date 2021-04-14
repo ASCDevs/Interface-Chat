@@ -124,8 +124,7 @@
 	-fx-border-width: 2px;
 }
 
-
-#campoNome,#campoSobrenome,#campoEmail,#campoCPF,#campoSenha,#campoConfirmarSenha{
+#campoNome,#campoSobrenome,#campoEmail,#campoSenha,#campoConfirmarSenha{
 	-fx-background-color: rgba(0,0,0,0);
 	-fx-border-style: hidden hidden solid hidden;
 	-fx-border-color: #00a611;

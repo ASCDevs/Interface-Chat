@@ -9,9 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="370.0" style="-fx-background-color: F4F4F4;" stylesheets="@../styles/TelaLogin.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="370.0" style="-fx-background-color: F4F4F4;" stylesheets="@../styles/TelaLogin.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: white;">
+      <Pane fx:id="headerSobre" prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,7 +25,7 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutY="417.0" prefHeight="63.0" prefWidth="370.0" style="-fx-background-color: white;">
+      <Pane fx:id="footerSobre" layoutY="417.0" prefHeight="63.0" prefWidth="370.0" style="-fx-background-color: white;">
          <children>
             <Button fx:id="btnFecharSobre" layoutX="100.0" layoutY="17.0" mnemonicParsing="false" onAction="#fecharSobre" prefHeight="30.0" prefWidth="170.0" text="OK">
                <font>
@@ -37,7 +37,7 @@
             </Button>
          </children>
       </Pane>
-      <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nesta janela você irá encontrar informações sobre o cadastro do usuário logado no programa, podendo alterar nome, foto e outras informações relevantes." textAlignment="JUSTIFY" wrappingWidth="341.599609375">
+      <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nesta seção você irá encontrar informações sobre o cadastro do usuário logado no programa, podendo alterar nome, foto e outras informações relevantes." textAlignment="JUSTIFY" wrappingWidth="341.599609375">
          <font>
             <Font size="14.0" />
          </font>

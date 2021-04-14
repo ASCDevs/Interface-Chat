@@ -49,3 +49,16 @@
 	-fx-border-color: #00a611;
 	-fx-border-width: 2px;
 }
+#headerSobre{
+	-fx-background-color: white;
+	-fx-border-style: hidden hidden solid hidden;
+	-fx-border-color: #BFBFBF;
+	-fx-border-widht: 1px;
+}
+#footerSobre{
+	-fx-background-color: white;
+	-fx-border-style: solid hidden hidden hidden;
+	-fx-border-color: #BFBFBF;
+	-fx-border-widht: 1px;
+	
+}

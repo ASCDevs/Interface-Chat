@@ -40,6 +40,7 @@ public class TelaLoginController implements Initializable {
 			String titulo = "Cadastro de usuário";
 			Stage stage = new Stage();
 			stage.setTitle(titulo);
+			stage.setResizable(false);
 			stage.setScene(new Scene(telaCadastro));
 			stage.show();
 		} catch (IOException e) {

@@ -15,9 +15,17 @@ public class TelaCadastroController {
 	public Button btnCancelar;
 	
 	@FXML
+	public Button btnCadastrar;
+	
+	@FXML
 	public void	cancelarAction() {
 		final Stage stage = (Stage) btnCancelar.getScene().getWindow();
 		stage.close();
+	}
+	
+	@FXML
+	public void cadastrarAction() {
+		
 	}
 	
 }

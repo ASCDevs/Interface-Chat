@@ -117,28 +117,18 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </TextField>
-                        <Text layoutX="14.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF">
+                        <Text layoutX="15.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOVA SENHA">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="campoCPF" layoutX="14.0" layoutY="286.0" prefHeight="32.0" prefWidth="548.0">
-                           <font>
-                              <Font name="Arial" size="14.0" />
-                           </font>
-                        </TextField>
-                        <Text layoutX="14.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOVA SENHA">
+                        <PasswordField fx:id="campoSenha" layoutX="15.0" layoutY="297.0" prefHeight="25.0" prefWidth="260.0" />
+                        <Text layoutX="302.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRMAR SENHA">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Text>
-                        <PasswordField fx:id="campoSenha" layoutX="14.0" layoutY="362.0" prefHeight="25.0" prefWidth="260.0" />
-                        <Text layoutX="301.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRMAR SENHA">
-                           <font>
-                              <Font name="Arial" size="18.0" />
-                           </font>
-                        </Text>
-                        <PasswordField fx:id="campoConfirmarSenha" layoutX="301.0" layoutY="362.0" prefHeight="25.0" prefWidth="260.0" />
+                        <PasswordField fx:id="campoConfirmarSenha" layoutX="302.0" layoutY="297.0" prefHeight="25.0" prefWidth="260.0" />
                      </children>
                   </Pane>
                </children>
