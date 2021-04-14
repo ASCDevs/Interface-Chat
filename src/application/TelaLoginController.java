@@ -11,7 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class TelaLoginController implements Initializable {
+public class TelaLoginController implements Initializable { 
+	
+	@FXML
+	public Button btnFecharSobre;
 	
 	@FXML
 	public Button btnEntrar;
@@ -43,10 +46,30 @@ public class TelaLoginController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	public void abrirSobreApp() {
+		try {
+			Pane telaSobre = FXMLLoader.load(getClass().getResource("/resources/TelaSobreApp.fxml"));
+			String titulo = "Sobre a aplicação";
+			Stage janelaSobre = new Stage();
+			janelaSobre.setResizable(false);
+			janelaSobre.setTitle(titulo);
+			janelaSobre.setScene(new Scene(telaSobre));
+			janelaSobre.show();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void fecharSobreApp() {
+		final Stage stage = (Stage) btnFecharSobre.getScene().getWindow();
+		stage.close();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		
 	}
 	

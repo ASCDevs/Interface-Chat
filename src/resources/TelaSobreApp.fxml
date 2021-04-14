@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="370.0" style="-fx-background-color: F4F4F4;" stylesheets="@../styles/TelaLogin.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaLoginController">
+   <children>
+      <Pane prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/sobre-plus.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="116.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sobre a aplicação">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutY="417.0" prefHeight="63.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="btnFecharSobre" layoutX="100.0" layoutY="17.0" mnemonicParsing="false" onAction="#fecharSobreApp" prefHeight="30.0" prefWidth="170.0" text="OK">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+      <Text layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aplicação desenvolvida com o intuito de implementar uma ferramenta de comunicação para o trabalho de Atividade Prática Semestral do 5º semestre na UNIP Paraíso - Ciência da Computação. Aplicando conceitos do comunicação em redes e desenvolvimento de software em cima de um problema dado relacionado a poluição do meio ambiente." textAlignment="JUSTIFY" wrappingWidth="341.599609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Line endX="100.0" layoutX="185.0" layoutY="240.0" startX="-100.0" stroke="#bfbfbf" />
+      <Text layoutX="135.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INTEGRANTES">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="60.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- ALEXANDRE SANTOS CAVALCANTE (N384425)" />
+      <Text layoutX="60.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- AUGUSTO CALISTO DE AQUINO (D898HI8)" wrappingWidth="255.1015625" />
+      <Text layoutX="60.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- FABRICIO DOS REIS OLIVERIA (N422GE6)" wrappingWidth="246.802734375" />
+      <Text layoutX="60.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- HELOISA FERREIRA DA SILVA (F037CJ1)" wrappingWidth="246.802734375" />
+      <Text layoutX="60.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- LUIZ GUSTAVO DE OLIVEIRA DINIZ (N537BD3)" />
+      <Text layoutX="60.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- NYCOLLAS EUFRASIO DA SILVA (N393246)" />
+      <Text layoutX="60.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- OSCAR LUIZ R DE OLIVEIRA (D85HEF7)" />
+      <Text layoutX="60.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- RAFAELA DOS SANTOS SILVA (D9219D0)" />
+      <Text layoutX="60.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- RODRIGO DURAN DANIEL (N458046)" />
+   </children>
+</Pane>

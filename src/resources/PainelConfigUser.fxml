@@ -33,7 +33,7 @@
                      </font>
                   </Text>
                   <Line endX="250.0" layoutX="410.0" layoutY="54.0" startX="-251.0" stroke="#00a611" strokeWidth="2.0" />
-                  <Button fx:id="btnInfoConfigUser" layoutX="748.0" layoutY="25.0" mnemonicParsing="false">
+                  <Button fx:id="btnInfoConfigUser" layoutX="748.0" layoutY="25.0" mnemonicParsing="false" onAction="#abrirSobre">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
