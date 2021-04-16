@@ -12,6 +12,7 @@ public class Contato {
 	private String status;
 	private String tipoContato;
 	private List<List<String>> conversa; 
+	private List<String> integrantes;
 	
 	Contato(String idContato,String idUserLogado, String nome, String status, String tipoContato){
 		this.idContato = idContato;

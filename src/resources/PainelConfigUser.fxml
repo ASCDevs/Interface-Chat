@@ -85,7 +85,7 @@
                            </font>
                         </TextField>
                         <Ellipse fill="#c4c4c4" layoutX="114.0" layoutY="86.0" radiusX="80.0" radiusY="80.0" stroke="#c4c4c4" strokeType="INSIDE" />
-                        <Button fx:id="btnEditFoto" layoutX="152.0" layoutY="128.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+                        <Button fx:id="btnEditFoto" layoutX="152.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarFoto" prefHeight="40.0" prefWidth="40.0">
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

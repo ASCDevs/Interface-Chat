@@ -46,4 +46,8 @@ public class Usuario {
 	public String getIdUser() {
 		return this.id;
 	}
+	
+	public void alterarFoto() {
+		
+	}
 }

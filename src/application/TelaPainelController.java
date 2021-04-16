@@ -119,7 +119,7 @@ public class TelaPainelController implements Initializable {
 	}
 	
 	public void setContatoControllers() {
-		contatos = new ArrayList();
+		contatos = new ArrayList<ContatoController>();
 		ArrayList<Contato> userContatos = user.getContatos();
 		
 		for(int i=0;i<userContatos.size();i++) {

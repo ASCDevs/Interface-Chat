@@ -31,6 +31,7 @@ public class TelaLoginController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		//Validar Usuario Server
 	}
 	
 	@FXML

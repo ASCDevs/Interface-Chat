@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,6 +18,9 @@ import models.Usuario;
 public class ConfigUserController implements Initializable{
 	
 	private Usuario userLogado;
+	
+	@FXML
+	public Button btnEditFoto;
 	
 	@FXML
 	public Button btnFecharSobre;
@@ -45,6 +50,12 @@ public class ConfigUserController implements Initializable{
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void editarFoto() {
+		JOptionPane.showMessageDialog(null, "Mesagem teste");
+		userLogado.alterarFoto();
 	}
 	
 	@FXML
