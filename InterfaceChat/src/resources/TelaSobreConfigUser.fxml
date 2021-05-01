@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="370.0" style="-fx-background-color: F4F4F4;" stylesheets="@../styles/TelaLogin.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="headerSobre" prefHeight="72.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="63.0" fitWidth="63.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/sobre-plus.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="82.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sobre &quot;Configurações de Usuário&quot;">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane fx:id="footerSobre" layoutY="417.0" prefHeight="63.0" prefWidth="370.0" style="-fx-background-color: white;">
+         <children>
+            <Button fx:id="btnFecharSobre" layoutX="100.0" layoutY="17.0" mnemonicParsing="false" onAction="#fecharSobre" prefHeight="30.0" prefWidth="170.0" text="OK">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+      <Text layoutX="14.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nesta seção você irá encontrar informações sobre o cadastro do usuário logado no programa, podendo alterar nome, foto e outras informações relevantes." textAlignment="JUSTIFY" wrappingWidth="341.599609375">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Line endX="100.0" layoutX="184.0" layoutY="340.0" startX="-100.0" stroke="#bfbfbf" />
+   </children>
+</Pane>

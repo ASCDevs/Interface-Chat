@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="80.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0">
+               <children>
+                  <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="22.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/configurar-plus.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="271.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurações do Usuário">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <Line endX="250.0" layoutX="410.0" layoutY="54.0" startX="-251.0" stroke="#00a611" strokeWidth="2.0" />
+                  <Button fx:id="btnInfoConfigUser" layoutX="748.0" layoutY="25.0" mnemonicParsing="false" onAction="#abrirSobre">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/sobre.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children></Pane>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="60.0" stylesheets="@../styles/PainelPrincipal.css" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="200.0">
+               <children>
+                  <Button fx:id="btnSaveUserConfig" layoutY="12.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="184.0" text="SALVAR E ALTERAR">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Button>
+               </children></Pane>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <ScrollPane fx:id="fundoForm" fitToWidth="true" prefHeight="414.0">
+         <content>
+            <VBox alignment="TOP_CENTER" fillWidth="false" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="594.0" prefWidth="773.0">
+               <children>
+                  <Pane maxWidth="820.0" prefWidth="650.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Text layoutX="225.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOME">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="626.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="campoNome" layoutX="225.0" layoutY="40.0" prefHeight="32.0" prefWidth="425.0">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Ellipse fill="#c4c4c4" layoutX="114.0" layoutY="86.0" radiusX="80.0" radiusY="80.0" stroke="#c4c4c4" strokeType="INSIDE" />
+                        <Button fx:id="btnEditFoto" layoutX="152.0" layoutY="128.0" mnemonicParsing="false" onAction="#editarFoto" prefHeight="40.0" prefWidth="40.0">
+                           <graphic>
+                              <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/edit-photo.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Text layoutX="225.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SOBRENOME">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="campoSobrenome" layoutX="225.0" layoutY="112.0" prefHeight="32.0" prefWidth="425.0">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="14.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="campoEmail" layoutX="14.0" layoutY="213.0" prefHeight="32.0" prefWidth="548.0">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="15.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOVA SENHA">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <PasswordField fx:id="campoSenha" layoutX="15.0" layoutY="297.0" prefHeight="25.0" prefWidth="260.0" />
+                        <Text layoutX="302.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRMAR SENHA">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Text>
+                        <PasswordField fx:id="campoConfirmarSenha" layoutX="302.0" layoutY="297.0" prefHeight="25.0" prefWidth="260.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
