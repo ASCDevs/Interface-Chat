@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: #3b3b3b; -fx-background-image: url(&quot;/resources/city-fundo.jpg&quot;);;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaPainelController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: #3b3b3b; -fx-background-image: url(&quot;/resources/city-fundo.jpg&quot;);;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox prefHeight="200.0" prefWidth="280.0" style="-fx-background-color: #2d2d2d;" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
                   <Line endX="137.5" layoutX="136.0" layoutY="100.0" startX="-130.0" stroke="#aeaeae" />
                   <Line endX="137.5" layoutX="136.0" layoutY="140.0" startX="-130.0" stroke="#aeaeae" />
                   <Ellipse fill="#dadada" layoutX="44.0" layoutY="52.0" radiusX="30.0" radiusY="30.0" stroke="#ffffff00" strokeType="INSIDE" />
-                  <Text layoutX="82.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Usuário" wrappingWidth="160.0068359375">
+                  <Text fx:id="nomeUser" layoutX="82.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Usuário" wrappingWidth="160.0068359375">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>

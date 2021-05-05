@@ -5,23 +5,25 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import application.ContatoController;
+
 public class Contato {
-	private String idContato;
-	private String idUserLogado;
+	private int idContato;
+	private Usuario userLogado;
 	private String nome;
 	private String status;
 	private String tipoContato;
-	private List<List<String>> conversa; 
+	private List<Mensagem> conversa; 
+	private ContatoController contatoController;
 	private List<Contato> integrantes;
 	
-	Contato(String idContato,String idUserLogado, String nome, String status, String tipoContato){
+	Contato(int idContato,Usuario userLogado, String nome){
 		this.idContato = idContato;
-		this.idUserLogado = idUserLogado;
+		this.userLogado = userLogado;
 		this.nome = nome;
-		this.status = status;
-		this.tipoContato = tipoContato;
-		this.conversa = new ArrayList<List<String>>();
-		this.loadConversa();
+		this.conversa = new ArrayList<Mensagem>();
+		contatoController = new ContatoController(this);
+		//this.loadConversa();
 	}
 	
 	private void loadConversa() {
@@ -33,26 +35,26 @@ public class Contato {
 		
 		//Dados de conversa fake do tipo Individual
 		//(Id de quem mandou a mesangem, mensagem, data e hora)
-		conversa.add(Arrays.asList(idContato,"Mensagem 1 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idContato,"Mensagem 2 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idUserLogado,"Mensagem 1 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idContato,"Mensagem 3 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idUserLogado,"Mensagem 2 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idContato,"Mensagem 4 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idUserLogado,"Mensagem 3 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idUserLogado,"Mensagem 4 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
-		conversa.add(Arrays.asList(idContato,"Mensagem 5 = Mensagens gravadas as: "+new Date(),"(Data a ser Formatada)"));
+		//conversa.add((Mensagem) new Mensagem().getArquivos());
+		//conversa.add(Arrays.asList(idContato,"Mensagem 2 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idUserLogado,"Mensagem 1 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idContato,"Mensagem 3 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idUserLogado,"Mensagem 2 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idContato,"Mensagem 4 Contato Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idUserLogado,"Mensagem 3 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idUserLogado,"Mensagem 4 Usuário Lorem ipsum dolor sit amet, consectetur ad","(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idContato,"Mensagem 5 = Mensagens gravadas as: "+new Date(),"(Data a ser Formatada)"));
 	}
 	
 	public void addMsgTextoUserLogado(String msg) {
 		//Quando conectar ao local de armazenamento 
 		//não será necessário gravar no array, somente enviar pra onde 
 		//irá armazenar
-		conversa.add(Arrays.asList(idUserLogado,msg,"(Data a ser formatada)"));
+		//conversa.add(Arrays.asList(idUserLogado,msg,"(Data a ser formatada)"));
 	}
 	
 	public void addMsgTextoContato(String msg) {
-		conversa.add(Arrays.asList(idContato,msg,"(Data a ser Formatada)"));
+		//conversa.add(Arrays.asList(idContato,msg,"(Data a ser Formatada)"));
 	}
 	
 	public String getNome() {
@@ -63,19 +65,28 @@ public class Contato {
 		return this.status;
 	}
 	
-	public String getIdContato() {
+	public int getIdContato() {
 		return this.idContato;
 	}
 	
-	public String getIdUserLogado() {
-		return this.idUserLogado;
+	public Usuario getUserLogado() {
+		return this.userLogado;
 	}
 	
-	public List<List<String>> getConversa(){
-		return this.conversa;
+	public ContatoController getController() {
+		return this.contatoController;
 	}
+	
+	/*public List<List<String>> getConversa(){
+		return this.conversa;
+	}*/
 	
 	public String getTipoContato() {
 		return this.tipoContato;
+	}
+
+	public void salvaMsg(String mensagem) {
+		
+		
 	}
 }

@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Contato;
+import models.Mensagem;
 
 public class ChatController implements Initializable{
 
@@ -46,11 +47,11 @@ public class ChatController implements Initializable{
 		txtNomeContato.setText(contato.getNome()+" - "+contato.getStatus());
 		painelScroll.vvalueProperty().bind(painelConversa.heightProperty());
 		
-		carregaConversa();
+		//carregaConversa();
 	}
 	
 	public void carregaConversa() {
-		List<List<String>> conversas = contato.getConversa();
+		/*List<List<String>> conversas = contato.getConversa();
 		Pane[] balaoConversa = new Pane[conversas.size()];
 		
 		
@@ -79,17 +80,33 @@ public class ChatController implements Initializable{
 				e.printStackTrace();
 			}
 		}
-		
+		*/
 	}
+	/*private void messageLoop() {
+		String msg;
+		do {
+			System.out.print("\nDigite uma mensagem (sair para finalizar): ");
+			msg = scanner.nextLine();
+			contato.getUserLogado().getChatSocket().sendMessage2(msg);
+			
+		}while(!msg.equalsIgnoreCase("sair")); //encerra o cliente qnd digitado sair
+	}*/
 	
 	@FXML
 	public void enviarUserMensagem() {
 
 		if(campoMsg.getText().trim().length()!=0) {
-			contato.addMsgTextoUserLogado(campoMsg.getText());
+			//contato.enviaMensagemServerViaSocket
+			Mensagem Msg = new Mensagem();
+			Msg.setIdDestinatario(contato.getIdContato());
+			Msg.setIdRemetente(contato.getUserLogado().getIdUser());
+			Msg.setMensagem(campoMsg.getText());
+			
+			contato.salvaMsg(Msg.getMensagem());
+			contato.getUserLogado().getChatSocket().sendMessage(Msg);
 			
 			FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaUser.fxml"));
-			balaoConversa.setController(new conversaController(contato.getIdUserLogado(),campoMsg.getText(),"(Data a ser formatada)","individual"));
+			balaoConversa.setController(new conversaController(campoMsg.getText()));
 			try {
 				painelConversa.getChildren().add(balaoConversa.load());
 				campoMsg.clear();
@@ -98,8 +115,21 @@ public class ChatController implements Initializable{
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
 		}
-
+		
+	}
+	
+	public void recebeContatoMensagemTexto(String msg) {
+		//adicionar uma função observer que fica es
+		contato.addMsgTextoContato(msg);
+		FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
+		balaoConversa.setController(new conversaController(msg));
+		try {
+			painelConversa.getChildren().add(balaoConversa.load());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void rolarConversa() {
@@ -114,18 +144,6 @@ public class ChatController implements Initializable{
 		
 	}
 	
-	@FXML
-	public void recebeContatoMensagem() {
-		//adicionar uma função observer que fica es
-		String msg = "Mensagem recebida da função que espera do server";
-		contato.addMsgTextoContato(msg);
-		FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
-		balaoConversa.setController(new conversaController(contato.getIdContato(),msg,"Data a ser formatada",contato.getTipoContato()));
-		try {
-			painelConversa.getChildren().add(balaoConversa.load());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 }

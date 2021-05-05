@@ -17,7 +17,7 @@ import models.Contato;
 
 public class ContatoController implements Initializable{
 	
-	public Contato contato;
+	private Contato contato;
 
 	@FXML
 	public Ellipse imgContato;
@@ -49,6 +49,18 @@ public class ContatoController implements Initializable{
 		}
 	}
 	
+	public void contatoEnviaMsgTexto(String msg) {
+		chatControl.recebeContatoMensagemTexto(msg);
+	}
+	
+	public void contatoEnviaMsgArquivo() {
+		
+	}
+	
+	public void verificaStatus() {
+		
+	}
+	
 	public Pane getChat() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/PainelChat.fxml"));
@@ -59,6 +71,10 @@ public class ContatoController implements Initializable{
 			e.printStackTrace();
 		}
 		return itemContato;
+	}
+	
+	public Contato getContato() {
+		return this.contato;
 	}
 	
 	

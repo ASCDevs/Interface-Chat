@@ -44,10 +44,9 @@
          <children>
             <Pane>
                <children>
-                  <TextArea fx:id="campoMsg" layoutX="14.0" layoutY="6.0" prefHeight="48.0" prefWidth="506.0" />
+                  <TextArea fx:id="campoMsg" layoutX="14.0" layoutY="6.0" prefHeight="48.0" prefWidth="654.0" />
                   <Button layoutX="744.0" layoutY="6.0" mnemonicParsing="false" onAction="#enviarUserMensagem" prefHeight="48.0" text="Enviar" />
                   <Button layoutX="683.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Anexar" />
-                  <Button layoutX="529.0" layoutY="6.0" mnemonicParsing="false" onAction="#recebeContatoMensagem" prefHeight="48.0" prefWidth="147.0" text="teste msg contato" />
                </children>
             </Pane>
          </children>

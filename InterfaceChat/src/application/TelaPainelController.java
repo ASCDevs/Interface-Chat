@@ -11,8 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import models.Contato;
 import models.Usuario;
+import services.serverconnect.ChatSocket;
 
 public class TelaPainelController implements Initializable {
 	
@@ -22,6 +24,9 @@ public class TelaPainelController implements Initializable {
 	public ConfigUserController configurarUser;
 	public Pane painelForm;
 	public Pane painelConfigUser;
+	
+	@FXML
+	public Text nomeUser;
 	
 	@FXML
 	public Button btnSair;
@@ -43,14 +48,21 @@ public class TelaPainelController implements Initializable {
 		System.exit(0);	
 	}
 
+	TelaPainelController(String username){
+		this.user = new Usuario(username);
+		ChatSocket clientSocket = new ChatSocket(this.user);
+		clientSocket.start();
+		System.out.println("Cliente Socket iniciado - no painel controller");
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		user = new Usuario("123"); //Tratar recebimento do id
+		nomeUser.setText(user.getNome());
 		carregarConfigUser();
 		carregarFormulario();
 		carregarContatos();
 	}
+	
 	
 	public void carregarConfigUser() {
 		this.configurarUser = new ConfigUserController(user);
@@ -123,7 +135,7 @@ public class TelaPainelController implements Initializable {
 		ArrayList<Contato> userContatos = user.getContatos();
 		
 		for(int i=0;i<userContatos.size();i++) {
-			contatos.add(new ContatoController(userContatos.get(i)));
+			contatos.add(userContatos.get(i).getController());
 		}
 		
 	}

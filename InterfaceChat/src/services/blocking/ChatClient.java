@@ -24,11 +24,7 @@ public class ChatClient implements Runnable{
 		try {
 			try {
 				//socket cliente local do lado do cliente
-				clientSocket = new ClientSocket(new Socket(SERVER_ADDRESS,SERVER_PORT));  //(String host, int porta)  a porta do servidor
-				
-				//Fluxo de dados (texto, arquivos, etc) através do OutputStream() que trabalha com bytes, e trata o envio de dados 
-				//atraves do out consegue enviar texto
-				//this.out = new PrintWriter(clientSocket.getOutputStream(), true); //autoFlsuh = true (permite confirmar envio)	
+				clientSocket = new ClientSocket(new Socket(SERVER_ADDRESS,SERVER_PORT));  //(String host, int porta)  a porta do servidor	
 				
 				System.out.println("Cliente conectado ao servidor em "+SERVER_ADDRESS+":"+SERVER_PORT);
 				
@@ -62,9 +58,6 @@ public class ChatClient implements Runnable{
 			msg = scanner.nextLine();
 			clientSocket.sendMsg(msg);
 			
-			//out.write(msg); via BufferedWriter
-			//out.newLine(); //quebra de linha via BufferedWriter
-			//out.flush(); //confirma o envio, faz com que seja enviada via BufferedWriter
 		}while(!msg.equalsIgnoreCase("sair")); //encerra o cliente qnd digitado sair
 	}
 

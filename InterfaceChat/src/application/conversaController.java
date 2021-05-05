@@ -21,12 +21,12 @@ public class conversaController implements Initializable{
 	
 	
 	//Construir Campo para data e hora
-	
-	conversaController(String idRemetente, String mensagem, String dataHora, String tipoConversa){
-		this.idRemetente = idRemetente;
+	//conversaController(String idRemetente, String mensagem, String dataHora, String tipoConversa){
+	conversaController(String mensagem){
+		//this.idRemetente = idRemetente;
 		this.mensagem = mensagem;
-		this.dataHora = dataHora;
-		this.tipoConversa = tipoConversa;
+		//this.dataHora = dataHora;
+		//this.tipoConversa = tipoConversa;
 	}
 
 	@Override
