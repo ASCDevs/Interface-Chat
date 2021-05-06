@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import models.Mensagem;
+
 public class ChatServer {
 	//porta constante a ser utilizada no servidor
 	//evitar portas de número baixo
@@ -39,12 +41,11 @@ public class ChatServer {
 	private void clientMessageLoop(ClientSocket clientSocket){
 		Mensagem msg;
 		try {
-			while((msg = clientSocket.getMessage()) != null) {
-				if("sair".equalsIgnoreCase(msg.getMensagem())) {
-					return;
-				}
-				System.out.printf("\nMsg recebida do cliente %s: %s",clientSocket.getRemoteSocketAddress(),msg);
-				sendMsgToAll(clientSocket, msg.getMensagem());
+			while(clientSocket.isConnected()) {
+				msg = clientSocket.getMessage();
+				System.out.println("Mensagem recebida de("+msg.getNomeRemetente()+"): "+msg.getMensagem());
+				//System.out.printf("\nMsg recebida do cliente %s: %s",clientSocket.getRemoteSocketAddress(),msg.getMensagem());
+				//sendMsgToAll(clientSocket, msg.getMensagem());
 			}
 		}finally {
 			clientSocket.close();
@@ -66,6 +67,10 @@ public class ChatServer {
 			}
 
 		}
+	}
+	
+	private void sendMsgToContact(ClientSocket remetente, ClientSocket destinatario, Mensagem msg) {
+		
 	}
 	
 	public static void main(String[] args) {
