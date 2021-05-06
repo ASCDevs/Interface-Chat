@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ScrollPane fx:id="painelScroll" fitToHeight="true" fitToWidth="true" maxWidth="1040.0" vvalue="1.0">
          <BorderPane.margin>

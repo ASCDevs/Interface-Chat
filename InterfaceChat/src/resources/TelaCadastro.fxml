@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="848.0" style="-fx-background-color: #F4F4F4;" stylesheets="@../styles/TelaCadastro.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaCadastroController">
+<AnchorPane prefHeight="600.0" prefWidth="848.0" style="-fx-background-color: #F4F4F4;" stylesheets="@../styles/TelaCadastro.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TelaCadastroController">
    <children>
    
       <Button fx:id="btnCancelar" layoutX="433.0" layoutY="530.0" mnemonicParsing="false" onAction="#cancelarAction" prefHeight="42.0" prefWidth="214.0" text="CANCELAR" textFill="WHITE">

@@ -11,7 +11,7 @@ import services.blocking.ClientSocket;
 
 public class ChatSocket implements Runnable{
 	private static final String SERVER_ADDRESS = "127.0.0.1";
-	private static final int SERVER_PORT = 5656; //51995 //5656
+	private static final int SERVER_PORT = 51995; //51995 //5656
 	private SocketClient socketClient;
 	private Usuario userAutenticado;
 	private Scanner scanner;
@@ -27,7 +27,7 @@ public class ChatSocket implements Runnable{
 				//socket cliente local do lado do cliente
 				socketClient = new SocketClient(new Socket(SERVER_ADDRESS,SERVER_PORT),userAutenticado);  //(String host, int porta)  a porta do servidor	
 				System.out.println("socketClient criado");
-				userAutenticado.setChatSocket(socketClient);
+				//userAutenticado.setChatSocket(socketClient);
 				
 				System.out.println("Cliente("+userAutenticado.getNome()+") conectado ao servidor em "+SERVER_ADDRESS+":"+SERVER_PORT);
 				

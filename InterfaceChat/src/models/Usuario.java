@@ -6,8 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import application.ContatoController;
+import services.blocking.ClientSocket;
 import services.serverconnect.DbConnection;
 import services.serverconnect.SocketClient;
 
@@ -22,7 +24,7 @@ public class Usuario {
 	private ArrayList<Contato> contatos;
 	private DbConnection db;
 	private Connection conex;
-	private SocketClient chatSocket;
+	private ClientSocket chatSocket;
 	
 	public Usuario(String username){
 		db = new DbConnection();
@@ -81,17 +83,52 @@ public class Usuario {
 		}
 	}
 	
+	public List<Mensagem> carregaConversaEntreContatoUser(int idContato) {
+		List<Mensagem> conversa = new ArrayList<Mensagem>();
+		
+		String query = "SELECT * FROM HistoricoConversa WHERE id_remetente in(?,?) AND id_destinatario in(?,?) ORDER BY id_conversa ASC";
+		
+		try {
+			PreparedStatement stmt = conex.prepareStatement(query);
+			stmt.setInt(1, idContato);
+			stmt.setInt(2, this.idUser);
+			stmt.setInt(3, idContato);
+			stmt.setInt(4, this.idUser);
+			stmt.execute();
+			ResultSet rsConversa = stmt.getResultSet();
+			while(rsConversa.next()) {
+				Mensagem msg = new Mensagem();
+				msg.setIdRemetente(rsConversa.getInt("id_remetente"));
+				msg.setIdDestinatario(rsConversa.getInt("id_destinatario"));
+				msg.setMensagem(rsConversa.getString("mensagem"));
+				conversa.add(msg);
+			}
+			
+			
+			stmt.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return conversa;
+	}
+	
+	
+	public void enviarMensagem(Mensagem msg) {
+		this.chatSocket.sendMsg(msg);
+	}
+	
 	public void recebeMensagemContato(int idContato) {
 		//busca o contato no array e verifica se é pertencente aos contatos ou n
 		//se for pertencente n faz nada e se n for add na aba de conversas
 		//contatoSetMensagemChat
 	}
 	
-	public void setChatSocket(SocketClient socket) {
+	public void setChatSocket(ClientSocket socket) {
 		this.chatSocket = socket;
 	}
 	
-	public SocketClient getChatSocket() {
+	public ClientSocket getChatSocket() {
 		return this.chatSocket;
 	}
 	

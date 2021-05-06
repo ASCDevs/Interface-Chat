@@ -49,9 +49,6 @@ public class ContatoController implements Initializable{
 		}
 	}
 	
-	public void contatoEnviaMsgTexto(String msg) {
-		chatControl.recebeContatoMensagemTexto(msg);
-	}
 	
 	public void contatoEnviaMsgArquivo() {
 		

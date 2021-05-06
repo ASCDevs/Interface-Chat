@@ -1,5 +1,6 @@
 package models;
 
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
@@ -10,10 +11,20 @@ public class Mensagem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//private List<UsuarioDTO> lista;
+	private String nomeRemetente;
 	private int idRemetente;
 	private int idDestinatario;
+	private List<Integer> idDestinatarios;
 	private String mensagem;
 	private Map<String, byte[]> arquivos = new HashMap<>();
+	
+	public String getNomeRemetente() {
+		return this.nomeRemetente;
+	}
+	
+	public void setNomeRemetente(String nome) {
+		this.nomeRemetente = nome;
+	}
 
 	public void setIdDestinatario(int idDestinatario) {
 		this.idDestinatario = idDestinatario;
@@ -46,6 +57,13 @@ public class Mensagem implements Serializable {
 	public void setArquivos(Map<String, byte[]> arquivos) {
 		this.arquivos = arquivos;
 	}
-
+	
+	public void addDestinatario(int idDestinatario) {
+		this.idDestinatarios.add(idDestinatario);
+	}
+	
+	public List<Integer> getIdDestinatarios(){
+		return this.idDestinatarios;
+	}
 
 }

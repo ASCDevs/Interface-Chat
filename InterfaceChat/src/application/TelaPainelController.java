@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Contato;
 import models.Usuario;
-import services.serverconnect.ChatSocket;
+import services.blocking.ChatClient;
 
 public class TelaPainelController implements Initializable {
 	
@@ -50,7 +50,7 @@ public class TelaPainelController implements Initializable {
 
 	TelaPainelController(String username){
 		this.user = new Usuario(username);
-		ChatSocket clientSocket = new ChatSocket(this.user);
+		ChatClient clientSocket = new ChatClient(this.user);
 		clientSocket.start();
 		System.out.println("Cliente Socket iniciado - no painel controller");
 	}

@@ -46,32 +46,32 @@ public class ChatController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		txtNomeContato.setText(contato.getNome()+" - "+contato.getStatus());
 		painelScroll.vvalueProperty().bind(painelConversa.heightProperty());
-		
-		//carregaConversa();
+		carregaConversa();
 	}
 	
 	public void carregaConversa() {
-		/*List<List<String>> conversas = contato.getConversa();
+		List<Mensagem> conversas = contato.getConversa();
 		Pane[] balaoConversa = new Pane[conversas.size()];
 		
 		
 		for(int i=0;i<balaoConversa.length;i++) {
-			String idRemetente = conversas.get(i).get(0);
-			String mensagem = conversas.get(i).get(1);
-			String dataHora = conversas.get(i).get(2);
-			String tipoContato = contato.getTipoContato();
+			String nomeRemetente = conversas.get(i).getNomeRemetente();
+			String mensagem = conversas.get(i).getMensagem();
+			//Arquivo
+			//String dataHora = conversas.get(i).get(2);
+			//String tipoContato = contato.getTipoContato();
 			try {
 				FXMLLoader loader;
 				//Irá pegar no array a indice 0 que corresponde ao id do dono da mensagem
-				if(conversas.get(i).get(0).equals(contato.getIdUserLogado())) {
+				if(conversas.get(i).getIdRemetente()==contato.getUserLogado().getIdUser()) {
 					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaUser.fxml"));
-				}else if((contato.getTipoContato().equals("individual"))) {
-					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
 				}else {
+					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
+				}/*else {
 					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaContatoGrupo.fxml"));
-				}
+				}*/
 				
-				loader.setController(new conversaController(idRemetente,mensagem,dataHora,tipoContato));//(Dono da msg, msg, data e hora)
+				loader.setController(new conversaController(nomeRemetente,mensagem));//(Dono da msg, msg, data e hora)
 				balaoConversa[i] = loader.load();
 				
 				
@@ -80,17 +80,8 @@ public class ChatController implements Initializable{
 				e.printStackTrace();
 			}
 		}
-		*/
+		
 	}
-	/*private void messageLoop() {
-		String msg;
-		do {
-			System.out.print("\nDigite uma mensagem (sair para finalizar): ");
-			msg = scanner.nextLine();
-			contato.getUserLogado().getChatSocket().sendMessage2(msg);
-			
-		}while(!msg.equalsIgnoreCase("sair")); //encerra o cliente qnd digitado sair
-	}*/
 	
 	@FXML
 	public void enviarUserMensagem() {
@@ -98,12 +89,15 @@ public class ChatController implements Initializable{
 		if(campoMsg.getText().trim().length()!=0) {
 			//contato.enviaMensagemServerViaSocket
 			Mensagem Msg = new Mensagem();
+			Msg.setNomeRemetente(contato.getUserLogado().getNome());
 			Msg.setIdDestinatario(contato.getIdContato());
 			Msg.setIdRemetente(contato.getUserLogado().getIdUser());
 			Msg.setMensagem(campoMsg.getText());
 			
-			contato.salvaMsg(Msg.getMensagem());
-			contato.getUserLogado().getChatSocket().sendMessage(Msg);
+			
+			contato.addMensagemConversa(Msg); //Salva no array para consulta em memória
+			contato.salvaMensagem(Msg); //Salva no banco
+			contato.getUserLogado().enviarMensagem(Msg);
 			
 			FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaUser.fxml"));
 			balaoConversa.setController(new conversaController(campoMsg.getText()));
@@ -120,11 +114,11 @@ public class ChatController implements Initializable{
 		
 	}
 	
-	public void recebeContatoMensagemTexto(String msg) {
+	public void recebeContatoMensagemTexto(Mensagem msg) {
 		//adicionar uma função observer que fica es
-		contato.addMsgTextoContato(msg);
+		contato.addMensagemConversa(msg);
 		FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
-		balaoConversa.setController(new conversaController(msg));
+		balaoConversa.setController(new conversaController(msg.getNomeRemetente(),msg.getMensagem()));
 		try {
 			painelConversa.getChildren().add(balaoConversa.load());
 		} catch (IOException e) {

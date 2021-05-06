@@ -1,4 +1,4 @@
-package services.serverconnect;
+package models;
 
 import java.io.Serializable;
 import java.util.HashMap;

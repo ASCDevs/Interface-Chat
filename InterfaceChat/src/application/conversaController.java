@@ -7,23 +7,28 @@ import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 
 public class conversaController implements Initializable{
-
+	
+	//Atributo para Arquivo
 	public String mensagem;
-	public String idRemetente;
-	public String dataHora;
-	public String tipoConversa;
+	public String remetente;
+	//public String dataHora;
+	//public String tipoConversa;
 	
 	@FXML 
 	public Text txtMsg;
 	
 	@FXML	
 	public Text nomeRemetente;
-	
+	conversaController(String mensagem){
+		this.mensagem = mensagem;
+		//this.dataHora = dataHora;
+		//this.tipoConversa = tipoConversa;
+	}
 	
 	//Construir Campo para data e hora
 	//conversaController(String idRemetente, String mensagem, String dataHora, String tipoConversa){
-	conversaController(String mensagem){
-		//this.idRemetente = idRemetente;
+	conversaController(String remetente, String mensagem){
+		this.remetente = remetente;
 		this.mensagem = mensagem;
 		//this.dataHora = dataHora;
 		//this.tipoConversa = tipoConversa;
@@ -31,9 +36,7 @@ public class conversaController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if(this.tipoConversa.equals("grupo")) {
-			this.nomeRemetente.setText(this.idRemetente);
-		}
+		
 		this.txtMsg.setText(this.mensagem);
 		
 	}
