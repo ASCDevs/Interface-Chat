@@ -54,15 +54,6 @@ public class ContatoController implements Initializable{
 		chatControl.recebeContatoMensagemTexto(msg);
 	}
 	
-	
-	public void contatoEnviaMsgArquivo() {
-		
-	}
-	
-	public void verificaStatus() {
-		
-	}
-	
 	public Pane getChat() {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/PainelChat.fxml"));
