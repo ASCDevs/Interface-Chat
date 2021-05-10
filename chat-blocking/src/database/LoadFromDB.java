@@ -47,6 +47,7 @@ public class LoadFromDB {
 			}
 			stmt.close();
 		}catch (SQLException e) {
+			System.out.println("Erro ao retornar porta: "+ e.getMessage());
 			e.printStackTrace();
 		}
 		return porta;
@@ -66,15 +67,32 @@ public class LoadFromDB {
 			}
 			stmt.close();
 		}catch (SQLException e) {
+			System.out.println("Erro ao retornar id user: "+e.getMessage());
 			e.printStackTrace();
 		}
 		return idUser;
 	}
+
+
+	public String retornaNomeUser(int idUser) {
+		String query = "SELECT * FROM Usuario WHERE id_usuario = ?";
+		String nome = "";
+		try {
+			PreparedStatement stmt = conex.prepareStatement(query);
+			stmt.setInt(1, idUser);
+			stmt.execute();
+			ResultSet dadosUser = stmt.getResultSet();
+			
+			while(dadosUser.next()) {
+				nome = dadosUser.getString("nome_usuario");
+			}
+			stmt.close();
+		}catch(SQLException e) {
+			System.out.println("Erro ao retornar nome user: "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+		return nome;
+	}
 	
-	/*public static void main(String[] args) {
-		LoadFromDB banco = new LoadFromDB();
-	
-		int port = banco.retornaIdUser(51119);
-		System.out.println("Hello "+port);
-	}*/
 }

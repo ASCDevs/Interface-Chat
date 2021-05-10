@@ -34,6 +34,7 @@ public class ChatServer {
 		while(true) {
 			ClientSocket clientSocket = new ClientSocket(serverSocket.accept());
 			clients.add(clientSocket);
+			//listarClientes();
 			
 			new Thread(()-> clientMessageLoop(clientSocket)).start(); 
 			
@@ -52,7 +53,11 @@ public class ChatServer {
 						System.out.println("Mensagem recebida de("+msg.getNomeRemetente()+") para ("+msg.getNomeDestino()+"): "+msg.getMensagem());
 						sendMsgToContact(clientSocket, msg);
 					}else {
-						System.out.println("Cliente desconectado");
+						int idDesconect = clientSocket.getIdUser();
+						String nome = clientSocket.getNome();
+						clients.removeIf(client -> client.getIdUser()==idDesconect);
+						System.out.println("Cliente ("+nome+" , id:"+idDesconect+") desconectado");
+						//listarClientes();
 						break;
 					}	
 				}
@@ -79,6 +84,14 @@ public class ChatServer {
 		ChatServer server = new ChatServer();
 		server.start();
 		System.out.println("Servidor finalizado.");
+	}
+	
+	public void listarClientes(){
+		System.out.println("--------------------");
+		for(ClientSocket cliente: clients) {
+			System.out.println("Cliente: "+cliente.getIdUser());
+		}
+		System.out.println("--------------------");
 	}
 	
 

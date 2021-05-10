@@ -1,27 +1,23 @@
 package serverobject;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketAddress;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import database.DbConnection;
 import models.Mensagem;
-import models.Usuario;
 import database.LoadFromDB;
 
 public class ClientSocket {
 	private final Socket socket;
 	private LoadFromDB db;
 	private int idUser;
+	private String nomeUser;
 	
 	public ClientSocket(Socket socket) throws IOException {
 		this.socket = socket;
 		db = new LoadFromDB();
 		idUser = db.retornaIdUser(socket.getPort());
-		System.out.println("Cliente ("+idUser+") ("+socket.getRemoteSocketAddress()+") conectou - Porta("+socket.getPort()+")");
+		nomeUser = db.retornaNomeUser(idUser);
+		System.out.println("Cliente ("+nomeUser+", id:"+idUser+") ("+socket.getRemoteSocketAddress()+") conectou - Porta("+socket.getPort()+")");
 		db.closeConection();
 	}
 	
@@ -50,7 +46,7 @@ public class ClientSocket {
 				return null;
 			}
 		} catch (IOException e) {
-			System.out.println("(Server)Erro ao pegar mensagem: "+e.getMessage());
+			//System.out.println("(Server)Erro ao pegar mensagem: "+e.getMessage());
 			//e.printStackTrace();
 			return null;
 		}
@@ -82,5 +78,9 @@ public class ClientSocket {
 	
 	public int getIdUser() {
 		return idUser;
+	}
+	
+	public String getNome() {
+		return this.nomeUser;
 	}
 }
