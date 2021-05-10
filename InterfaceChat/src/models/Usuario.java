@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.ContatoController;
+import services.blocking.ChatClient;
 import services.blocking.ClientSocket;
 import services.serverconnect.DbConnection;
-import services.serverconnect.SocketClient;
 
 public class Usuario {
 	
@@ -25,6 +25,7 @@ public class Usuario {
 	private DbConnection db;
 	private Connection conex;
 	private ClientSocket chatSocket;
+	private ChatClient chatClient;
 	
 	public Usuario(String username){
 		db = new DbConnection();
@@ -118,22 +119,50 @@ public class Usuario {
 		this.chatSocket.sendMsg(msg);
 	}
 	
-	public void recebeMensagemContato(int idContato) {
-		//busca o contato no array e verifica se é pertencente aos contatos ou n
-		//se for pertencente n faz nada e se n for add na aba de conversas
-		//contatoSetMensagemChat
+	
+	
+	public void recebeMensagemContato(Mensagem msg) { 
+		for(Contato contato : contatos) {
+			if(contato.getIdContato()==msg.getIdRemetente()) {
+				contato.recebeMensagemContato(msg);
+			}
+		}
 	}
 	
 	public void setChatSocket(ClientSocket socket) {
 		this.chatSocket = socket;
 	}
 	
+	public int getPorta() {
+		String query = "SELECT * FROM Usuario WHERE id_usuario = ?";
+		int id = 0;
+		try {
+			PreparedStatement stmt = conex.prepareStatement(query);
+			stmt.setInt(1, this.idUser);
+			stmt.execute();
+			
+			ResultSet rsUser = stmt.getResultSet();
+			while(rsUser.next()) {
+				id = rsUser.getInt("porta_ip_usuario");
+			}
+			
+			stmt.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
 	public ClientSocket getChatSocket() {
 		return this.chatSocket;
 	}
 	
-	public void alterarFoto() {
-		
+	public void setChatClient(ChatClient chatClient) {
+		this.chatClient = chatClient;
+	}
+	
+	public ChatClient getChatClient() {
+		return this.chatClient;
 	}
 	
 	public ArrayList<Contato> getContatos(){
@@ -185,9 +214,6 @@ public class Usuario {
 		this.ip = ip;
 	}
 
-	public int getPorta() {
-		return porta;
-	}
 
 	public void setPorta(int porta) {
 		this.porta = porta;

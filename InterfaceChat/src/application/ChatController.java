@@ -5,8 +5,8 @@ import java.net.URL;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,12 +20,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Contato;
 import models.Mensagem;
+import services.blocking.ClientSocket;
 
 public class ChatController implements Initializable{
 
 	private Contato contato;
 	private String tipoChat;
 	public double vValue = 0.0;
+	public Mensagem message;
+	public ClientSocket clientSocket;
+	
 	@FXML
 	public Text txtNomeContato;
 	
@@ -38,6 +42,7 @@ public class ChatController implements Initializable{
 	@FXML
 	public TextArea campoMsg;
 	
+	
 	ChatController(Contato contato){
 		this.contato = contato;
 	}
@@ -47,6 +52,23 @@ public class ChatController implements Initializable{
 		txtNomeContato.setText(contato.getNome()+" - "+contato.getStatus());
 		painelScroll.vvalueProperty().bind(painelConversa.heightProperty());
 		carregaConversa();
+		/*new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				
+				while(clientSocket.getSocket().isConnected()){
+					Mensagem msg = clientSocket.getMessage();
+					String txt = msg.getMensagem();
+					System.out.println("Chegou no chat> "+txt);
+					recebeContatoMensagemTexto(msg);
+				}
+			}
+			
+		}).start();*/
+		
+		
+		
 	}
 	
 	public void carregaConversa() {
@@ -57,21 +79,17 @@ public class ChatController implements Initializable{
 		for(int i=0;i<balaoConversa.length;i++) {
 			String nomeRemetente = conversas.get(i).getNomeRemetente();
 			String mensagem = conversas.get(i).getMensagem();
-			//Arquivo
-			//String dataHora = conversas.get(i).get(2);
-			//String tipoContato = contato.getTipoContato();
+			
 			try {
 				FXMLLoader loader;
-				//Irá pegar no array a indice 0 que corresponde ao id do dono da mensagem
+				
 				if(conversas.get(i).getIdRemetente()==contato.getUserLogado().getIdUser()) {
 					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaUser.fxml"));
 				}else {
 					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
-				}/*else {
-					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaContatoGrupo.fxml"));
-				}*/
+				}
 				
-				loader.setController(new conversaController(nomeRemetente,mensagem));//(Dono da msg, msg, data e hora)
+				loader.setController(new conversaController(nomeRemetente,mensagem));
 				balaoConversa[i] = loader.load();
 				
 				
@@ -90,6 +108,7 @@ public class ChatController implements Initializable{
 			//contato.enviaMensagemServerViaSocket
 			Mensagem Msg = new Mensagem();
 			Msg.setNomeRemetente(contato.getUserLogado().getNome());
+			Msg.setNomeDestino(contato.getNome());
 			Msg.setIdDestinatario(contato.getIdContato());
 			Msg.setIdRemetente(contato.getUserLogado().getIdUser());
 			Msg.setMensagem(campoMsg.getText());
@@ -105,7 +124,6 @@ public class ChatController implements Initializable{
 				painelConversa.getChildren().add(balaoConversa.load());
 				campoMsg.clear();
 				campoMsg.requestFocus();
-				//rolarConversa();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -114,30 +132,26 @@ public class ChatController implements Initializable{
 		
 	}
 	
+	
+
 	public void recebeContatoMensagemTexto(Mensagem msg) {
-		//adicionar uma função observer que fica es
+		System.out.println(msg.getNomeRemetente()+" diz: "+msg.getMensagem());
 		contato.addMensagemConversa(msg);
-		FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
-		balaoConversa.setController(new conversaController(msg.getNomeRemetente(),msg.getMensagem()));
-		try {
-			painelConversa.getChildren().add(balaoConversa.load());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void rolarConversa() {
+		contato.salvaMensagem(msg); //Salva no banco
 		
-		Platform.runLater(()->{
-			painelScroll.layout();
-			vValue = painelScroll.getVvalue();
-			System.out.println("Desceu: "+vValue);
-			
-			painelScroll.setVvalue(vValue);
-		});
-		
+		//Permite ser chamada de qualquer Thread para alocar na Thread do JavaFX e rodar
+		Platform.runLater(new Runnable() {
+            @Override public void run() {
+            	FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
+        		balaoConversa.setController(new conversaController(msg.getNomeRemetente(),msg.getMensagem()));
+        		try {
+        			painelConversa.getChildren().add(balaoConversa.load());
+        			
+        		} catch (IOException e) {
+        			e.printStackTrace();
+        		}
+            }
+        });
 	}
-	
-	
 
 }

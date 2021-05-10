@@ -55,7 +55,7 @@ public class ConfigUserController implements Initializable{
 	@FXML
 	public void editarFoto() {
 		JOptionPane.showMessageDialog(null, "Mesagem teste");
-		userLogado.alterarFoto();
+		
 	}
 	
 	@FXML

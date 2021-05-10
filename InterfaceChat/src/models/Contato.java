@@ -25,7 +25,9 @@ public class Contato {
 		this.loadConversa();
 	}
 	
-	
+	public void recebeMensagemContato(Mensagem msg) {
+		contatoController.recebeMensagem(msg);
+	}
 	
 	private void loadConversa() {
 		conversa = userLogado.carregaConversaEntreContatoUser(idContato);

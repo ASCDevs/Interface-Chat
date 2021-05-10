@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Text;
 import models.Contato;
+import models.Mensagem;
 
 public class ContatoController implements Initializable{
 	
@@ -47,6 +48,10 @@ public class ContatoController implements Initializable{
 		}else {
 			indicadorStatus.setStyle("-fx-fill: #c6c6c6");
 		}
+	}
+	
+	public void recebeMensagem(Mensagem msg) {
+		chatControl.recebeContatoMensagemTexto(msg);
 	}
 	
 	

@@ -12,18 +12,27 @@ public class Mensagem implements Serializable {
 
 	//private List<UsuarioDTO> lista;
 	private String nomeRemetente;
+	private String nomeDestinatario;
 	private int idRemetente;
 	private int idDestinatario;
 	private List<Integer> idDestinatarios;
 	private String mensagem;
 	private Map<String, byte[]> arquivos = new HashMap<>();
 	
+	public String getNomeDestino() {
+		return this.nomeDestinatario;
+	}
+	
+	public void setNomeDestino(String nomeDestino) {
+		this.nomeDestinatario = nomeDestino;
+	}
+	
 	public String getNomeRemetente() {
 		return this.nomeRemetente;
 	}
 	
-	public void setNomeRemetente(String nome) {
-		this.nomeRemetente = nome;
+	public void setNomeRemetente(String nomeRemetente) {
+		this.nomeRemetente = nomeRemetente;
 	}
 
 	public void setIdDestinatario(int idDestinatario) {

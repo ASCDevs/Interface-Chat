@@ -42,6 +42,7 @@ public class TelaLoginController implements Initializable {
 				if(bd.validarLogin(username, senha)) {
 					bd.close();
 					System.out.println("Válidado com sucesso");
+					
 					TelaPainelController painelController = new TelaPainelController(username);
 					Pane telaPainel = new Pane();
 					
