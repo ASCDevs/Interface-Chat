@@ -2,17 +2,27 @@ package serverobject;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import database.DbConnection;
 import models.Mensagem;
+import models.Usuario;
+import database.LoadFromDB;
 
 public class ClientSocket {
 	private final Socket socket;
-	private String nomeUsuario;
+	private LoadFromDB db;
+	private int idUser;
 	
 	public ClientSocket(Socket socket) throws IOException {
 		this.socket = socket;
-		System.out.println("Cliente "+socket.getRemoteSocketAddress()+" conectou");
-
+		db = new LoadFromDB();
+		idUser = db.retornaIdUser(socket.getPort());
+		System.out.println("Cliente ("+idUser+") ("+socket.getRemoteSocketAddress()+") conectou - Porta("+socket.getPort()+")");
+		db.closeConection();
 	}
 	
 	public SocketAddress getRemoteSocketAddress() {
@@ -56,7 +66,21 @@ public class ClientSocket {
 		}
 	}
 	
+
+	
 	public boolean isConnected() {
 		return socket.isConnected();
+	}
+	
+	public boolean isClosed() {
+		return socket.isClosed(); //retorna true se a porta estiver fechada
+	}
+	
+	public int getPort() {
+		return socket.getPort(); 
+	}
+	
+	public int getIdUser() {
+		return idUser;
 	}
 }
