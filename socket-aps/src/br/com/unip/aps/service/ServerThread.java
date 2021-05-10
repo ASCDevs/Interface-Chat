@@ -50,8 +50,8 @@ public class ServerThread implements Runnable {
 						
 						oos.writeObject(userMensagem);
 						
-						usuarioRelacao.setUsuarioEmissor(usuarioDAO.findByUser(userMensagem.getRemetente()));
-						usuarioRelacao.setUsuarioReceptor(usuarioDAO.findByUser(userMensagem.getLista().get(i).getNome()));
+						//usuarioRelacao.setUsuarioEmissor(usuarioDAO.findByUser(userMensagem.getRemetente()));
+						//usuarioRelacao.setUsuarioReceptor(usuarioDAO.findByUser(userMensagem.getLista().get(i).getNome()));
 						
 						if(userMensagem.getLista().size() > 1 && !enviado) {
 							enviado = true;  // grupo
@@ -61,7 +61,7 @@ public class ServerThread implements Runnable {
 						} else {
 							enviado = true; // individual
 							
-							usuarioDAO.sendMessage(usuarioRelacao, userMensagem.getMensagem());
+							//usuarioDAO.sendMessage(usuarioRelacao, userMensagem.getMensagem());
 						}
 						
 						

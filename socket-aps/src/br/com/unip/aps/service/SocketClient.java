@@ -20,7 +20,7 @@ public class SocketClient {
 
 		try {
 			socket = new Socket("localhost", 51995, null, user.getPorta());
-
+			
 			System.out.println("Sou o Cliente: " + usuario + " - " + socket.getLocalPort());
 
 			new Thread(new ClientThread(socket.getInputStream())).start();

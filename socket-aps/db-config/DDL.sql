@@ -1,4 +1,4 @@
-create database SocketAps
+create database SocketAps;
 
 use SocketAps;
 
