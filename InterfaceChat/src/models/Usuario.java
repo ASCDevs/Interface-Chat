@@ -26,6 +26,7 @@ public class Usuario {
 	private Connection conex;
 	private ClientSocket chatSocket;
 	private ChatClient chatClient;
+	private boolean userLogado = false;
 	
 	public Usuario(String username){
 		db = new DbConnection();
@@ -219,8 +220,13 @@ public class Usuario {
 		this.porta = porta;
 	}
 	
-	public void close() {
-		
+	public void setUserLogado(boolean valor) {
+		userLogado = valor;
+	}
+	
+	
+	public boolean getUserLogado() {
+		return userLogado;
 	}
 	
 	

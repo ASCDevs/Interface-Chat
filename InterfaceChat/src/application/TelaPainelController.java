@@ -48,11 +48,8 @@ public class TelaPainelController implements Initializable {
 		System.exit(0);	
 	}
 
-	TelaPainelController(String username){
-		this.user = new Usuario(username);
-		ChatClient clientSocket = new ChatClient(this.user);
-		clientSocket.start();
-		System.out.println("Cliente Socket iniciado - no painel controller");
+	TelaPainelController(Usuario user){
+		this.user = user;
 	}
 
 	@Override

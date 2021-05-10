@@ -3,6 +3,9 @@ package services.blocking;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
+import javax.swing.JOptionPane;
+
 import models.Mensagem;
 import models.Usuario;
 
@@ -10,7 +13,7 @@ public class ChatClient implements Runnable{
 	
 	private static final String SERVER_ADDRESS = "127.0.0.1";
 	private static final int SERVER_PORT = 5656;
-	private ClientSocket clientSocket;
+	public ClientSocket clientSocket;
 	private Usuario userAutenticado;
 	
 	
@@ -21,18 +24,21 @@ public class ChatClient implements Runnable{
 	public void start() {
 		try {
 			int porta = userAutenticado.getPorta();
-			clientSocket = new ClientSocket(new Socket(SERVER_ADDRESS,SERVER_PORT,null,porta)); 
+			clientSocket = new ClientSocket(new Socket(SERVER_ADDRESS,SERVER_PORT,null,porta));
+			
 			userAutenticado.setChatSocket(clientSocket); 
 			System.out.println("Cliente conectado ao servidor em "+SERVER_ADDRESS+":"+SERVER_PORT);
-
+			userAutenticado.setUserLogado(false);
 			new Thread(this).start();
 			
+			
 		} catch (UnknownHostException e) {
-			System.out.println("Erro ao iniciar cliente: "+e.getMessage());
-			e.printStackTrace();
+			System.out.println("1 - Erro ao iniciar cliente: "+e.getMessage());
+			//e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("Erro ao iniciar cliente: "+e.getMessage());
-			e.printStackTrace();
+			userAutenticado.setUserLogado(true);
+			System.out.println("2 - Erro ao iniciar cliente: "+e.getMessage());
+			//e.printStackTrace();
 		}
 	}
 	

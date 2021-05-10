@@ -148,7 +148,7 @@ public class ChatController implements Initializable{
         			painelConversa.getChildren().add(balaoConversa.load());
         			
         		} catch (IOException e) {
-        			e.printStackTrace();
+        			//e.printStackTrace();
         		}
             }
         });

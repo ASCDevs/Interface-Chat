@@ -3,6 +3,9 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,9 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Usuario;
+import services.blocking.ChatClient;
 import services.serverconnect.ServerDataInfo;
 
-public class TelaLoginController implements Initializable { 
+public class TelaLoginController implements Initializable {
+	
+	public Usuario user;
 	
 	@FXML
 	public TextField campoLogin;
@@ -42,16 +48,26 @@ public class TelaLoginController implements Initializable {
 				if(bd.validarLogin(username, senha)) {
 					bd.close();
 					System.out.println("Válidado com sucesso");
+					this.user = new Usuario(username);
+					ChatClient clientSocket = new ChatClient(this.user);
+					clientSocket.start();
 					
-					TelaPainelController painelController = new TelaPainelController(username);
-					Pane telaPainel = new Pane();
 					
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/TelaPainel.fxml"));
-					loader.setController(painelController);
-					
-					telaPainel = loader.load();
-					String titulo = "Chat - Secretaria do Meio Ambiente do Estado";
-					Main.abrirTela(telaPainel,titulo);
+					if(!user.getUserLogado()) {
+						System.out.println("Conexão feita com sucesso. UserLoagado: "+user.getUserLogado());
+						
+						TelaPainelController painelController = new TelaPainelController(user);
+						Pane telaPainel = new Pane();
+						
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/TelaPainel.fxml"));
+						loader.setController(painelController);
+						
+						telaPainel = loader.load();
+						String titulo = "Chat - Secretaria do Meio Ambiente do Estado";
+						Main.abrirTela(telaPainel,titulo);
+					}else {
+						JOptionPane.showMessageDialog(null, "(Login Controller) Usuário já está logado!");
+					}
 				}else {
 					System.out.println("Erro ao validar");
 				}
