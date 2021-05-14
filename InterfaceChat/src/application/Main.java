@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -47,5 +48,13 @@ public class Main extends Application {
 		stage.setX((screenBounds.getWidth()-stage.getWidth())/2);
 		stage.setY((screenBounds.getHeight()-stage.getHeight())/2);
 	}
+	
+	@Override
+	public void stop(){
+		System.exit(0);
+	}
+	
+	
+	
 	
 }

@@ -4,17 +4,24 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import models.Contato;
 import models.Usuario;
-import services.blocking.ChatClient;
+import services.server.ChatClient;
 
 public class TelaPainelController implements Initializable {
 	
@@ -30,6 +37,9 @@ public class TelaPainelController implements Initializable {
 	
 	@FXML
 	public Button btnSair;
+	
+	@FXML
+	public Text txtUnidade;
 	
 	@FXML
 	public Button btnConfig;
@@ -55,12 +65,21 @@ public class TelaPainelController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		nomeUser.setText(user.getNome());
+		txtUnidade.setText("Inspetor - "+user.getEquipe());
 		carregarConfigUser();
 		carregarFormulario();
 		carregarContatos();
+		setReferenciaPainelContatos();
 	}
 	
 	
+	private void setReferenciaPainelContatos() {
+		for(ContatoController contato: contatos) {
+			contato.setReferenciaPainel(this);
+		}
+		
+	}
+
 	public void carregarConfigUser() {
 		this.configurarUser = new ConfigUserController(user);
 		
@@ -147,6 +166,27 @@ public class TelaPainelController implements Initializable {
 		this.exibePainel(painelForm);
 	}
 	
+	@FXML
+	public void abrirProcurarConversa() {
+		try {
+			Pane layoutProcurarConversa = new Pane();
+			Stage janelaProcurarConversa = new Stage();
+			janelaProcurarConversa.setTitle("Procurar Conversa");
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/TelaProcurarController.fxml"));
+			loader.setController(new TelaProcurarContatoController(user.getContatos()));
+			layoutProcurarConversa = loader.load();
+			
+			Scene cena = new Scene(layoutProcurarConversa);
+			janelaProcurarConversa.setResizable(false);
+			janelaProcurarConversa.setScene(cena);
+			janelaProcurarConversa.show();
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public void exibePainel(Pane painel) {
 		painelExibicao.getChildren().setAll(painel);
@@ -155,4 +195,9 @@ public class TelaPainelController implements Initializable {
 		painelExibicao.setRightAnchor(painel,0.0);
 		painelExibicao.setBottomAnchor(painel, 0.0);
 	}
+	
+	
+	
+	
+	
 }

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="fundoChat" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <ScrollPane fx:id="painelScroll" fitToHeight="true" fitToWidth="true" maxWidth="1040.0" vvalue="1.0">
          <BorderPane.margin>
@@ -27,15 +31,19 @@
          <children>
             <Pane maxWidth="520.0" prefHeight="53.0" prefWidth="410.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Text fx:id="txtNomeContato" layoutX="68.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Contato" />
-                  <Ellipse fill="DODGERBLUE" layoutX="34.0" layoutY="26.0" radiusX="20.0" radiusY="20.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fx:id="txtNomeContato" layoutX="68.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome do Contato">
+                     <font>
+                        <Font name="Arial Bold" size="14.0" />
+                     </font></Text>
+                  <Ellipse fill="#e4e4e4" layoutX="34.0" layoutY="26.0" radiusX="20.0" radiusY="20.0" stroke="#e4e4e4" strokeType="INSIDE" />
+                  <ImageView fitHeight="29.0" fitWidth="29.0" layoutX="20.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icone-contato.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
-            <Pane maxWidth="520.0" prefHeight="53.0" prefWidth="410.0">
-               <children>
-                  <Button layoutX="295.0" layoutY="14.0" mnemonicParsing="false" text="Opções do User" />
-               </children>
-            </Pane>
+            <Pane maxWidth="520.0" prefHeight="53.0" prefWidth="410.0" />
          </children>
       </HBox>
    </top>
@@ -44,9 +52,29 @@
          <children>
             <Pane>
                <children>
-                  <TextArea fx:id="campoMsg" layoutX="14.0" layoutY="6.0" prefHeight="48.0" prefWidth="654.0" />
-                  <Button layoutX="744.0" layoutY="6.0" mnemonicParsing="false" onAction="#enviarUserMensagem" prefHeight="48.0" text="Enviar" />
-                  <Button layoutX="683.0" layoutY="6.0" mnemonicParsing="false" prefHeight="48.0" text="Anexar" />
+                  <TextArea fx:id="campoMsg" layoutX="14.0" layoutY="7.0" prefHeight="48.0" prefWidth="654.0" />
+                  <Button fx:id="btnEnviar" layoutX="744.0" layoutY="6.0" mnemonicParsing="false" onAction="#enviarUserMensagem" prefHeight="48.0" prefWidth="48.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/send.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button fx:id="btnAnexar" layoutX="683.0" layoutY="6.0" mnemonicParsing="false" onAction="#enviarUserArquivo" prefHeight="48.0" prefWidth="48.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/anexar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
             </Pane>
          </children>

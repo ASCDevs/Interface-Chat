@@ -1,6 +1,5 @@
 package models;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,16 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.ContatoController;
-import services.blocking.ChatClient;
-import services.blocking.ClientSocket;
+import services.server.ChatClient;
+import services.server.ClientSocket;
 import services.serverconnect.DbConnection;
 
 public class Usuario {
 	
 	private int idUser;
 	private String nome;
-	private String username; //email
+	private String sobrenome;
+	private String username; 
+	private String equipe;
 	private String senha;
 	private String ip;
 	private int porta;
@@ -50,8 +50,11 @@ public class Usuario {
 			while(dadosUser.next()) {
 				this.idUser = dadosUser.getInt("id_usuario");
 				this.nome = dadosUser.getString("nome_usuario");
+				this.sobrenome = dadosUser.getString("sobrenome_usuario");
+				this.equipe = dadosUser.getString("equipe_usuario");
 				this.username = dadosUser.getString("username_usuario");
 				this.senha = dadosUser.getString("senha_usuario");
+				this.porta = dadosUser.getInt("porta_ip_usuario");
 			}
 			stmt.close();
 		}catch (SQLException e) {
@@ -61,7 +64,7 @@ public class Usuario {
 	}
 	
 	public void carregaContatos(){
-		String query = "SELECT u.* FROM Usuario u, UsuarioContatos uc WHERE uc.id_contato = u.id_usuario AND uc.id_usuario = ?";
+		String query = "SELECT * FROM Usuario WHERE id_usuario <> ?";
 		
 		try {
 			PreparedStatement stmt = conex.prepareStatement(query);
@@ -69,13 +72,17 @@ public class Usuario {
 			stmt.execute();
 			ResultSet rsContato = stmt.getResultSet();
 			while(rsContato.next()) {
-				//IdContato, IdUserLogado, Nome
+				
 				int idContato;
 				String nomeContato;
+				String sobrenomeContato;
+				String equipeContato;
 				
 				idContato = rsContato.getInt("id_usuario");
 				nomeContato = rsContato.getString("nome_usuario");
-				contatos.add(new Contato(idContato,this,nomeContato));
+				sobrenomeContato = rsContato.getString("sobrenome_usuario");
+				equipeContato = rsContato.getString("equipe_usuario");
+				contatos.add(new Contato(idContato,this,nomeContato,sobrenomeContato,equipeContato));
 				System.out.println("Contato adicionado");
 			}
 			
@@ -115,6 +122,22 @@ public class Usuario {
 		return conversa;
 	}
 	
+	public void salvaMensagemComContato(Mensagem msg, int idContato) {
+		String query = "INSERT INTO HistoricoConversa(id_remetente,id_destinatario,mensagem) values(?,?,?)";
+		try {
+			PreparedStatement stmt = conex.prepareStatement(query);
+			stmt.setInt(1, this.idUser);
+			stmt.setInt(2, idContato);
+			stmt.setString(3,msg.getMensagem());
+			
+			stmt.execute();
+			
+			stmt.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public void enviarMensagem(Mensagem msg) {
 		this.chatSocket.sendMsg(msg);
@@ -135,23 +158,7 @@ public class Usuario {
 	}
 	
 	public int getPorta() {
-		String query = "SELECT * FROM Usuario WHERE id_usuario = ?";
-		int id = 0;
-		try {
-			PreparedStatement stmt = conex.prepareStatement(query);
-			stmt.setInt(1, this.idUser);
-			stmt.execute();
-			
-			ResultSet rsUser = stmt.getResultSet();
-			while(rsUser.next()) {
-				id = rsUser.getInt("porta_ip_usuario");
-			}
-			
-			stmt.close();
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return id;
+		return this.porta;
 	}
 	
 	public ClientSocket getChatSocket() {
@@ -225,9 +232,24 @@ public class Usuario {
 	}
 	
 	
+	public String getSobrenome() {
+		return this.sobrenome;
+	}
+	
 	public boolean getUserLogado() {
 		return userLogado;
 	}
+	
+	public String getEquipe() {
+		return this.equipe;
+	}
+
+	@Override
+	public String toString() {
+		return  nome +" "+ sobrenome;
+	}
+	
+	
 	
 	
 }

@@ -1,4 +1,4 @@
-package services.blocking;
+package services.server;
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketAddress;
@@ -7,7 +7,6 @@ import models.Mensagem;
 
 public class ClientSocket {
 	private final Socket socket;
-	private String nomeUsuario;
 	
 	public ClientSocket(Socket socket) throws IOException {
 		this.socket = socket;

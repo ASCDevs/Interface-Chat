@@ -1,0 +1,15 @@
+#campoBusca{
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-style: hidden hidden solid hidden;
+	-fx-border-color: #00a611;
+	-fx-border-width: 1px;
+}
+
+#btnBuscaContato{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnBuscaContato:hover{
+	-fx-background-color:#f0f0f0;
+}
+

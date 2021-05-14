@@ -1,0 +1,57 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#btnVoltar{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnVoltar:hover{
+	-fx-background-color:#f0f0f0;
+}
+
+#btnCriar{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnCriar:hover{
+	-fx-background-color:#f0f0f0;
+}
+
+#btnPesquisar{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnPesquisar:hover{
+	-fx-background-color:#f0f0f0;
+}
+
+#btnInserirIntegrante{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnInserirIntegrante:hover{
+	-fx-background-color:#f0f0f0;
+}
+
+#btnTirarIntegrante{
+	-fx-background-color: rgba(0,0,0,0);
+}
+
+#btnTirarIntegrante:hover{
+	-fx-background-color:#f0f0f0;
+}
+
+#iconeGrupo{
+	-fx-background-color:  #e6e6e6;
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: 131 134;
+	-fx-background-position: center;
+	-fx-border-radius: 50px;
+	-fx-background-radius: 50px;
+}
+
+#nomeGrupo{
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-style: hidden hidden solid hidden;
+	-fx-border-color: #00a611;
+	-fx-border-width: 1px;
+}

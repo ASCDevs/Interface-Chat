@@ -16,6 +16,8 @@ create table Usuario(
 	ip_address_usuario varchar(18) not null,
 	porta_ip_usuario varchar(5) not null
 );
+ALTER TABLE Usuario ADD COLUMN sobrenome_usuario varchar(100) not null;
+ALTER TABLE Usuario ADD COLUMN equipe_usuario varchar(100) not null;
 
 create table UsuarioGrupo(
 	id_usuario_grupo int auto_increment primary key,

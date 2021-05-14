@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import models.Usuario;
-import services.blocking.ChatClient;
+import services.server.ChatClient;
 import services.serverconnect.ServerDataInfo;
 
 public class TelaLoginController implements Initializable {
@@ -69,6 +69,7 @@ public class TelaLoginController implements Initializable {
 						JOptionPane.showMessageDialog(null, "(Login Controller) Usuário já está logado!");
 					}
 				}else {
+					JOptionPane.showMessageDialog(null, "Login ou senha inválidos");
 					System.out.println("Erro ao validar");
 				}
 				

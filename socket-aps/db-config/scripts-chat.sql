@@ -7,6 +7,8 @@ select * from Grupo;
 select * from UsuarioGrupo;
 select * from UsuarioRelacao;
 
+
+
 select * from UsuarioContatos; #ok
 select * from HistoricoConversa; #ok
 
@@ -19,6 +21,7 @@ insert into HistoricoConversa(id_remetente,id_destinatario,mensagem) values(3,12
 insert into HistoricoConversa(id_remetente,id_destinatario,mensagem) values(3,12,"Mensagem de teste 2");
 insert into HistoricoConversa(id_remetente,id_destinatario,mensagem) values(12,3,"Mensagem de teste 3");
 insert into HistoricoConversa(id_remetente,id_destinatario,mensagem) values(12,3,"Mensagem de teste 4");
+INSERT INTO HistoricoConversa(id_remetente,id_destinatario,mensagem) values(,,);
 
 -- REMETENTE - DESTINATÁRIO
 insert into HistoricoConversa(id_remetente,id_destinatario,mensagem) values(4,12,"Mensagem com outro 1");
@@ -49,5 +52,26 @@ insert into UsuarioContatos values(6,1);
 insert into UsuarioContatos values(6,2);
 insert into UsuarioContatos values(6,7);
 
+SELECT * FROM Usuario WHERE id_usuario <> 1;
+
+DELETE FROM Usuario WHERE id_usuario = 11;
+
+UPDATE Usuario SET equipe_usuario = 'Unidade I' where id_usuario = 1;
+UPDATE Usuario SET equipe_usuario = 'Unidade I' where id_usuario = 2;
+UPDATE Usuario SET equipe_usuario = 'Unidade I' where id_usuario = 3;
+UPDATE Usuario SET equipe_usuario = 'Unidade II' where id_usuario = 4;
+UPDATE Usuario SET equipe_usuario = 'Unidade II' where id_usuario = 5;
+UPDATE Usuario SET equipe_usuario = 'Unidade II' where id_usuario = 6;
+UPDATE Usuario SET equipe_usuario = 'Unidade III' where id_usuario = 7;
+UPDATE Usuario SET equipe_usuario = 'Unidade III' where id_usuario = 8;
+UPDATE Usuario SET equipe_usuario = 'Unidade III' where id_usuario = 9;
+UPDATE Usuario SET equipe_usuario = 'Unidade III' where id_usuario = 12;
+
+SELECT * FROM Usuario;
+
 SELECT u.* FROM Usuario u, UsuarioContatos uc WHERE uc.id_contato = u.id_usuario AND uc.id_usuario = 6;
-DELETE FROM UsuarioContatos WHERE id_usuario = 6;
+DELETE FROM Usuario WHERE id_usuario = 10;
+
+select * from HistoricoConversa;
+delete from HistoricoConversa;
+drop table HistoricoConversa;

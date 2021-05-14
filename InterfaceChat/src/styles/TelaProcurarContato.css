@@ -1,0 +1,22 @@
+#btnVoltar{
+	-fx-background-color: rgba(0,0,0,0);
+}
+#btnVoltar:hover{
+	-fx-background-color: #f0f0f0;
+}
+
+#btnAbrirConversa{
+	-fx-background-color: rgba(0,0,0,0);
+	-fx-border-style: solid;
+	-fx-border-color: #000000;
+	-fx-border-width: 2px;
+}
+
+#btnAbrirConversa:hover{
+	-fx-background-color: #00a611;
+	-fx-text-fill: white;
+	-fx-border-style: solid;
+	-fx-border-color: #00a611;
+	-fx-border-width: 2px;
+	
+}

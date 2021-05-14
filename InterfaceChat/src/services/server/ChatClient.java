@@ -1,4 +1,4 @@
-package services.blocking;
+package services.server;
 
 import java.io.IOException;
 import java.net.Socket;

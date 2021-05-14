@@ -25,14 +25,11 @@ public class ContatoController implements Initializable{
 	@FXML
 	public Text nomeContato;
 	@FXML
-	public Ellipse indicadorStatus;
-	@FXML
-	public Text txtStatus;
-	@FXML
 	public HBox fundoCard;
 	
 	public Pane itemContato;
 	public ChatController chatControl;
+	public TelaPainelController painelReferencia;
 
 	public ContatoController(Contato contato){
 		this.contato = contato;
@@ -42,12 +39,7 @@ public class ContatoController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		nomeContato.setText(contato.getNome());
-		txtStatus.setText(contato.getStatus());
-		if(contato.getStatus()=="online") {
-			indicadorStatus.setStyle("-fx-fill: #04d939");
-		}else {
-			indicadorStatus.setStyle("-fx-fill: #c6c6c6");
-		}
+
 	}
 	
 	public void recebeMensagem(Mensagem msg) {
@@ -70,5 +62,12 @@ public class ContatoController implements Initializable{
 		return this.contato;
 	}
 	
+	public void setReferenciaPainel(TelaPainelController painel) {
+		this.painelReferencia = painel;
+	}
+	
+	public TelaPainelController getReferenciaPainel() {
+		return this.painelReferencia;
+	}
 	
 }

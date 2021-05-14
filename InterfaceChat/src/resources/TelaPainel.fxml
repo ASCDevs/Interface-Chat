@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: #3b3b3b; -fx-background-image: url(&quot;/resources/city-fundo.jpg&quot;);;" stylesheets="@../styles/PainelPrincipal.css" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" style="-fx-background-color: #3b3b3b; -fx-background-image: url(&quot;/resources/city-fundo.jpg&quot;);;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox prefHeight="200.0" prefWidth="280.0" style="-fx-background-color: #2d2d2d;" BorderPane.alignment="CENTER">
          <children>
@@ -31,7 +31,7 @@
                         <Font name="Arial Bold" size="18.0" />
                      </font>
                   </Text>
-                  <Text fill="#656565" layoutX="82.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inspetor - Equipe X">
+                  <Text fx:id="txtUnidade" fill="#656565" layoutX="82.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inspetor - Equipe X">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -60,34 +60,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="btnNovoContato" graphicTextGap="0.0" layoutX="72.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/novo-contato.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="btnNovoGrupo" layoutX="119.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/novo-grupo.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                     </graphic>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="btnNovaConversa" layoutX="167.0" layoutY="104.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+                  <Button fx:id="btnNovaConversa" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" onAction="#abrirProcurarConversa" prefHeight="34.0" prefWidth="254.0" text="Procurar conversa com contato">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -98,8 +71,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
                   </Button>
-                  <Button fx:id="btnFormulario" layoutX="23.0" layoutY="148.0" mnemonicParsing="false" onAction="#acessarFormulario" prefHeight="34.0" prefWidth="237.0" text="Enviar dados para Secretaria">
+                  <Button fx:id="btnFormulario" layoutX="14.0" layoutY="145.0" mnemonicParsing="false" onAction="#acessarFormulario" prefHeight="34.0" prefWidth="254.0" text="Enviar dados para Secretaria">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -114,6 +90,11 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <ImageView fitHeight="49.0" fitWidth="49.0" layoutX="20.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icone-contato.png" />
+                     </image>
+                  </ImageView>
                </children>
                <effect>
                   <DropShadow blurType="TWO_PASS_BOX" height="84.63" offsetX="10.0" offsetY="10.0" radius="46.662499999999994" spread="0.2" width="104.02" />

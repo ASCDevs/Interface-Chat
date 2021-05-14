@@ -1,25 +1,31 @@
 package models;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import application.ContatoController;
+import services.serverconnect.DbConnection;
 
 public class Contato {
 	private int idContato;
 	private Usuario userLogado;
 	private String nome;
+	private String sobrenome;
+	private String equipe;
 	private String status;
 	private List<Mensagem> conversa; 
 	private ContatoController contatoController;
-	private List<Contato> integrantes;
+
 	
-	Contato(int idContato,Usuario userLogado, String nome){
+	Contato(int idContato,Usuario userLogado, String nome, String sobrenome, String equipe){
 		this.idContato = idContato;
 		this.userLogado = userLogado;
 		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.equipe = equipe;
 		this.conversa = new ArrayList<Mensagem>();
 		contatoController = new ContatoController(this);
 		this.loadConversa();
@@ -35,7 +41,7 @@ public class Contato {
 	}
 	
 	public void salvaMensagem(Mensagem msg) {
-		//userLogado.gravaMensagemConversa(msg); //-> grava no banco
+		userLogado.salvaMensagemComContato(msg, this.idContato);
 	}
 	
 	public void addMensagemConversa(Mensagem msg) {
@@ -44,6 +50,10 @@ public class Contato {
 	
 	public String getNome() {
 		return this.nome;
+	}
+	
+	public String getSobrenome() {
+		return this.sobrenome;
 	}
 	
 	public String getStatus() {
@@ -58,6 +68,10 @@ public class Contato {
 		return this.userLogado;
 	}
 	
+	public String getEquipe() {
+		return this.equipe;
+	}
+	
 	
 	public ContatoController getController() {
 		return this.contatoController;
@@ -66,5 +80,13 @@ public class Contato {
 	public List<Mensagem> getConversa(){
 		return this.conversa;
 	}
+
+	@Override
+	public String toString() {
+		return nome + " " + sobrenome;
+	}
+	
+	
+	
 	
 }

@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -13,15 +14,15 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import models.Contato;
 import models.Mensagem;
-import services.blocking.ClientSocket;
+import services.server.ClientSocket;
 
 public class ChatController implements Initializable{
 
 	private Contato contato;
-	private String tipoChat;
-	public double vValue = 0.0;
 	public Mensagem message;
 	public ClientSocket clientSocket;
 	
@@ -44,7 +45,7 @@ public class ChatController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		txtNomeContato.setText(contato.getNome()+" - "+contato.getStatus());
+		txtNomeContato.setText(contato.toString()+" - "+contato.getEquipe()); //add a equipe que Pertence
 		painelScroll.vvalueProperty().bind(painelConversa.heightProperty());
 		carregaConversa();		
 		
@@ -56,8 +57,6 @@ public class ChatController implements Initializable{
 		
 		
 		for(int i=0;i<balaoConversa.length;i++) {
-			String nomeRemetente = conversas.get(i).getNomeRemetente();
-			String mensagem = conversas.get(i).getMensagem();
 			
 			try {
 				FXMLLoader loader;
@@ -68,7 +67,7 @@ public class ChatController implements Initializable{
 					loader = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
 				}
 				
-				loader.setController(new conversaController(nomeRemetente,mensagem));
+				loader.setController(new conversaController(conversas.get(i)));
 				balaoConversa[i] = loader.load();
 				
 				
@@ -94,11 +93,11 @@ public class ChatController implements Initializable{
 			
 			
 			contato.addMensagemConversa(Msg); //Salva no array para consulta em memória
-			contato.salvaMensagem(Msg); //Salva no banco
+			//contato.salvaMensagem(Msg); //Salva no banco
 			contato.getUserLogado().enviarMensagem(Msg);
 			
 			FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaUser.fxml"));
-			balaoConversa.setController(new conversaController(campoMsg.getText()));
+			balaoConversa.setController(new conversaController(Msg));
 			try {
 				painelConversa.getChildren().add(balaoConversa.load());
 				campoMsg.clear();
@@ -111,18 +110,43 @@ public class ChatController implements Initializable{
 		
 	}
 	
-	
+	@FXML
+	public void enviarUserArquivo() {
+		Stage janelaArquivos = new Stage();
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Open Resource File");
+		File file = fileChooser.showOpenDialog(janelaArquivos);
+		
+		Mensagem Msg = new Mensagem();
+		Msg.setNomeRemetente(contato.getUserLogado().getNome());
+		Msg.setNomeDestino(contato.getNome());
+		Msg.setIdDestinatario(contato.getIdContato());
+		Msg.setIdRemetente(contato.getUserLogado().getIdUser());
+		Msg.setArquivo(file);
+		
+		contato.addMensagemConversa(Msg);
+		contato.getUserLogado().enviarMensagem(Msg);
+		
+		FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaUser.fxml"));
+		balaoConversa.setController(new conversaController(Msg));
+		try {
+			painelConversa.getChildren().add(balaoConversa.load());
+			campoMsg.clear();
+			campoMsg.requestFocus();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void recebeContatoMensagemTexto(Mensagem msg) {
 		System.out.println(msg.getNomeRemetente()+" diz: "+msg.getMensagem());
 		contato.addMensagemConversa(msg);
-		contato.salvaMensagem(msg); //Salva no banco
 		
 		//Permite ser chamada de qualquer Thread para alocar na Thread do JavaFX e rodar
 		Platform.runLater(new Runnable() {
             @Override public void run() {
             	FXMLLoader balaoConversa = new FXMLLoader(getClass().getResource("/resources/itemConversaContato.fxml"));
-        		balaoConversa.setController(new conversaController(msg.getNomeRemetente(),msg.getMensagem()));
+        		balaoConversa.setController(new conversaController(msg));
         		try {
         			painelConversa.getChildren().add(balaoConversa.load());
         			

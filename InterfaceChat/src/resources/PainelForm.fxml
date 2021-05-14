@@ -2,7 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" stylesheets="@../styles/PainelPrincipal.css" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" stylesheets="@../styles/PainelPrincipal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" minHeight="-Infinity" prefHeight="80.0" BorderPane.alignment="CENTER">
          <children>
@@ -55,7 +55,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnEnviaForm" layoutX="45.0" layoutY="12.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" text="ENVIAR">
+                  <Button fx:id="btnEnviaForm" layoutX="45.0" layoutY="12.0" mnemonicParsing="false" onAction="#enviarEmail" prefHeight="36.0" prefWidth="111.0" text="ENVIAR">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -63,6 +63,11 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
+                  <Label fx:id="labelAviso" layoutX="-230.0" layoutY="5.0" textFill="#ee0000">
+                     <font>
+                        <Font name="Arial Bold" size="10.0" />
+                     </font>
+                  </Label>
                </children></Pane>
          </children>
       </HBox>
@@ -84,12 +89,11 @@
                               <Font name="Arial" size="14.0" />
                            </font>
                         </TextField>
-                        <Text layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SETOR DA SECRETARIA">
+                        <Text layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL DA SECRETARIA">
                            <font>
                               <Font name="Arial" size="18.0" />
                            </font>
                         </Text>
-                        <ComboBox layoutY="120.0" prefHeight="31.0" prefWidth="261.0" />
                         <Text layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ANOTAÇÕES E OBSERVAÇÕES">
                            <font>
                               <Font name="Arial" size="18.0" />
@@ -105,7 +109,7 @@
                            </font>
                         </Text>
                         <ListView fx:id="listaArquivos" layoutY="364.0" prefHeight="180.0" prefWidth="360.0" />
-                        <Button fx:id="btnAddArquivo" alignment="TOP_CENTER" layoutX="407.0" layoutY="364.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="243.0" text="ANEXAR ARQUIVO">
+                        <Button fx:id="btnAddArquivo" alignment="TOP_CENTER" layoutX="407.0" layoutY="364.0" mnemonicParsing="false" onAction="#selecionarArquivo" prefHeight="38.0" prefWidth="243.0" text="ANEXAR ARQUIVO">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -120,6 +124,20 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
+                        <Button fx:id="btnRemoverArquivo" layoutX="183.0" layoutY="557.0" mnemonicParsing="false" onAction="#removerArquivo" text="REMOVER ARQUIVO">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Button fx:id="btnAbrirArquivo" layoutX="14.0" layoutY="557.0" mnemonicParsing="false" onAction="#abrirArquivo" text="ABRIR ARQUIVO">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font></Button>
+                        <Label fx:id="lblErro" layoutX="407.0" layoutY="477.0" textFill="RED" />
+                        <TextField fx:id="campoEmail" layoutY="110.0" prefHeight="32.0" prefWidth="650.0">
+                           <font>
+                              <Font name="Arial" size="14.0" />
+                           </font>
+                        </TextField>
                      </children>
                   </Pane>
                </children>
