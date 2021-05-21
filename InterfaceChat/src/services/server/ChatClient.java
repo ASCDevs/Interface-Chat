@@ -24,6 +24,7 @@ public class ChatClient implements Runnable{
 	public void start() {
 		try {
 			int porta = userAutenticado.getPorta();
+			System.out.println(porta);
 			clientSocket = new ClientSocket(new Socket(SERVER_ADDRESS,SERVER_PORT,null,porta));
 			
 			userAutenticado.setChatSocket(clientSocket); 
