@@ -9,9 +9,9 @@ public class DbConnection {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			String bdUrl = "";
-			String bdUsuario = "";
-			String bdSenha = "";
+			String bdUrl = "jdbc:mysql://baseaps.mysql.dbaas.com.br/baseaps?serverTimezone=UTC";
+			String bdUsuario = "baseaps";
+			String bdSenha = "Lab881@UNIP";
 
 			Connection c = DriverManager.getConnection(bdUrl, bdUsuario, bdSenha);
 
