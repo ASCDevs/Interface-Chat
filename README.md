@@ -3,7 +3,7 @@
 
 ------------
 <p align="center">
-	<img height="515px" width="853px" alt="print da aplicação" src="https://drive.google.com/file/d/18EeDXAY9PeTrLsIYZh7-kcSMTEJspNj9/view?usp=sharing"/>
+	<img height="515px" width="853px" alt="print da aplicação" src="https://drive.google.com/uc?export=view&id=18EeDXAY9PeTrLsIYZh7-kcSMTEJspNj9"/>
 </p>
 <details>
 <summary><strong>Sobre o projeto</strong></summary>
@@ -21,6 +21,6 @@ Tem como objetivo permitir a comunicação entre aplicações clientes, trocando
 <details>
 <summary><strong>Fluxo da aplicação</strong></summary>
 <p align="center">
-	<img alt="Fluxo do programa" src="https://drive.google.com/file/d/1EYWP_ERXNCt5rA8T6CngyIZjmL_wYADZ/view?usp=sharing"/>
+	<img alt="Fluxo do programa" src="https://drive.google.com/uc?export=view&id=1EYWP_ERXNCt5rA8T6CngyIZjmL_wYADZ"/>
 </p>
 </details>
