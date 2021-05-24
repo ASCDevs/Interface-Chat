@@ -12,6 +12,16 @@ Tem como objetivo permitir a comunicação entre aplicações clientes, trocando
 </details>
 
 <details>
+<summary><strong>Estrutura</strong></summary>
+O projeto "chat-blocking" deve ser iniciado primeiro, para inicar o server socket e 
+permitir a comunicação entre os clientes, para executar o cliente, rodar o projeto
+"InterfaceChat".
+<li>InterfaceChat - código fonte da aplicação cliente</li>
+<li>chat-blocking - código fonte da aplicação server socket</li>
+<li>bd-mysql - scripts para criar e inserir dados no mysql</li>
+</details>
+
+<details>
 <summary><strong>Especificações</strong></summary>
 <li>Java 11.0.10</li>
 <li>JavaFX 11.0.2</li>
